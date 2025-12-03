@@ -16,8 +16,6 @@ Control_Unit module (
 		output reg			E_Out,
 		output reg	[1:0]	S_Pc,
 
- 
-
 	);
 
 
@@ -95,6 +93,7 @@ always @(posedge clk or negedge rst_n) begin
 		
 	end
 end
+
 
 
 endmodule
