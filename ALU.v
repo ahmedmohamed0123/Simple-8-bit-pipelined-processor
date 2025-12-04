@@ -73,6 +73,8 @@ assign N =  (((Alu_Op== 5'b00010) || (Alu_Op== 5'b00011) || (Alu_Op== 5'b00100) 
 (Alu_Op==5'b01000 || Alu_Op==5'b01001) ? N_old :0;
 assign C= (Alu_Op==5'b01000)? 1 : ((Alu_Op== 5'b00010) || (Alu_Op==  5'b00011) || (Alu_Op==  5'b00110) ||  (Alu_Op==  5'b00111) || (Alu_Op==  5'b10000) || (Alu_Op==  5'b10001) ) ? c_result : (Alu_Op==5'b01001) ? 0 : C;
 assign V =  ((((Alu_Op== 5'b00010) || (Alu_Op==  5'b00011) || (Alu_Op==  5'b00110) ||  (Alu_Op==  5'b00111) || (Alu_Op==  5'b10000) || (Alu_Op==  5'b10001) )) && ((A > 0 && B>0 && Result<0) || (A < 0 && B<0 && Result>0) ) )? 1 : ((Alu_Op==5'b01000 || Alu_Op==5'b01001))?V_old : 0;
-
+ assign z_old = Z;
+ assign V_old= V;
+ assign N_old = N;
 
 endmodule
