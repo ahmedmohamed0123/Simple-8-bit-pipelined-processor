@@ -108,6 +108,68 @@ ALU dut(.clk(clk),.rst(rst),.A(A),.B(B),.ALU_opcode(ALU_opcode),.out(out),.Z(Z),
     else begin 
         $display ("error at A=%d , B=%d at time=%t",A,B,$time);
     end
+    /*
+    ALU_opcode=4'b0111; //--> SETC
+    @(negedge clk) ;
+
+    if(dut.CCR[2] == 1) begin
+     $display("Correct output !");
+    end
+    else begin 
+        $display ("error at A=%d , B=%d at time=%t",A,B,$time);
+    end
+
+     ALU_opcode=4'b1000; //--> CLRC
+    @(negedge clk) ;
+
+    if(dut.CCR[2] == 1) begin
+     $display("Correct output !");
+    end
+    else begin 
+        $display ("error at A=%d , B=%d at time=%t",A,B,$time);
+    end
+     
+     repeat(100) begin 
+        ALU_opcode=$random;
+        A=$random;
+        B=$random;
+        @(negedge clk);
+        if(dut.out==0) begin
+            if(dut.CCR[0]==1) begin 
+                $display("Correct output !");
+            end
+            else begin 
+                $display("error!");
+        end
+        end
+        else if (dut.out<0)  begin
+              if(dut.CCR[1]==1) begin 
+                $display("Correct output !");
+            end
+             else begin 
+                $display("error!");
+        end
+        end
+
+        else if ((A>0 && B>0 && dut.out<0) || (A<0 && B<0 && dut.out>0) && ALU_opcode==4'b0001) begin
+            if(dut.CCR[3]==1) begin 
+                $display("Correct output !");
+            end
+             else begin 
+                $display("error!");
+        end
+        end
+
+        else if ((A>0  && dut.out<0) || (A<0  && dut.out>0) && ALU_opcode==4'b0010) begin
+            if(dut.CCR[3]==1) begin 
+                $display("Correct output !");
+            end
+             else begin 
+                $display("error!");
+        end
+        end
+     end
+*/
     $stop;
  end
 endmodule

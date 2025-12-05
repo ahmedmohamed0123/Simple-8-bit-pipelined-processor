@@ -75,7 +75,7 @@ always @(*) begin
         4'b1000:    C = 0;                       //Clear Carry (CLRC) and save last values of Z,C,V,N
 
         4'b1001: begin                           //NOT
-            out = !B;
+            out = ~B;
             N = out[7];                                          
             Z = !out ? 1 : 0; 
         end
