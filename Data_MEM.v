@@ -10,7 +10,7 @@ module DataMEM (
 
     // 256 x 8-bit memory
     reg [7:0] mem [0:255];
-    int i;
+    integer i;
 
         // Synchronous memory operations
     always @(posedge Clk or negedge rst_n) begin
