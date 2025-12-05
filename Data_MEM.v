@@ -1,5 +1,6 @@
 module DataMEM (
-    input  wire        Clk,       
+    input  wire        Clk,
+    input  wire        rst_n,
     input  wire        WE,        // Write Enable 
     input  wire        RE,        // Read Enable
     input  wire [7:0]  A,         // Address
@@ -9,14 +10,15 @@ module DataMEM (
 
     // 256 x 8-bit memory
     reg [7:0] mem [0:255];
+    int i;
 
-    initial begin
-        $readmemh("memory_init.txt", mem);  
-       
-    end
-
-    // Synchronous memory operations
-    always @(posedge Clk) begin
+        // Synchronous memory operations
+    always @(posedge Clk or negedge rst_n) begin
+        if(!rst_n) begin 
+            for (i=0;i<256;i=i+1) begin
+                mem[i]=8'h00;
+            end
+        end
         if (WE)
             mem[A] <= WD;
         if (RE)
