@@ -27,8 +27,8 @@ module Control_Unit (
 		// Data memory control signals
 		output reg			w_E_M,		// Write enable for Data memory
 		output reg			w_Add_S_M,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
-		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: ALU out, 1: PC+1)
- 
+		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: Mux for Alu_out & R[rb], 1: PC+1)
+        output reg          w_data_S_M_rb // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
 		output reg			Out_E		// Enable for Output port
 	);
 
@@ -36,7 +36,7 @@ module Control_Unit (
 always @(*)	begin
 	
 	// pc control signals 
-			S_Taeget	=2'b00;
+			S_Target	=2'b00;
 			E_Pc	=1'b0;	
 			E_Imm	=1'b0;		
 			load	=1'b0;
@@ -53,6 +53,7 @@ always @(*)	begin
 			w_E_M	=1'b0;
 			w_Add_S_M	=1'b0;
 			w_Data_S_M	=1'b0;
+			w_data_S_M_rb=1'b0;
 
 			Out_E	=1'b0;
 
@@ -238,7 +239,7 @@ always @(*)	begin
 							w_E_M	= 1'b1;
 							w_Add_S_M	= 1'b0;
 							w_Data_S_M	= 1'b0;
-
+                            w_data_S_M_rb=1'b0;
 					end
 
 					2'h1: begin              // POP
@@ -260,7 +261,7 @@ always @(*)	begin
 							w_E_M	=1'b0;
 							w_Add_S_M	=1'b0;
 							w_Data_S_M	=1'b0;
-
+                            w_data_S_M_rb=1'b0;
 							Out_E	=1'b0;
 
 					end
@@ -383,7 +384,7 @@ always @(*)	begin
 					2'h0: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -409,7 +410,7 @@ always @(*)	begin
 					2'h1: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -435,7 +436,7 @@ always @(*)	begin
 					2'h2: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -461,7 +462,7 @@ always @(*)	begin
 					2'h3: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -491,7 +492,7 @@ always @(*)	begin
 			4'hA: begin
 
 			// pc control signals 
-					S_Taeget	=2'b00;
+					S_Target	=2'b00;
 					E_Pc	=1'b0;	
 					E_Imm	=1'b0;		
 					load	=1'b0;
@@ -520,7 +521,7 @@ always @(*)	begin
 					2'h0: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -546,7 +547,7 @@ always @(*)	begin
 					2'h1: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -572,7 +573,7 @@ always @(*)	begin
 					2'h2: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -598,7 +599,7 @@ always @(*)	begin
 					2'h3: begin
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -627,40 +628,75 @@ always @(*)	begin
 
 /*------------------------------------- L-Format -------------------------------------*/
 
-			4'hC: begin
+			4'hC: begin //(pc+2->pc)
 
-			case (Opcode[3:2])
+			case (Opcode[3:2]) // select depending on ra
 
-					2'h0: begin
+					2'h0: begin //LDM (R[rb] ← imm)
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b1;	
-							E_Imm	=1'b1;		
-							load	=1'b0;
+					// pc control signals 	
+						E_Pc	=1'b1;	// high to pass data
+						E_Imm	=1'b1;		// increment by 2
+						load	=1'b1; // select pc+2
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
+							w_E_R	=1'b1;		 // to write imm in R[rb] 
+							w_Add_S_R	=1'b1;	 // to select rb
+							w_Data_S_R	= 3'h4;	 // to select imm
 
 					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
+							Alu_Op	= 4'h15; // we don't need to aluop
 
 
 					end
 
-					2'h1: begin
+					2'h1: begin //LDD (R[rb] ← M[ea])
 
 					// pc control signals 
-							S_Taeget	=2'b00;
+							E_Pc	=1'b1;	// high to pass data
+							E_Imm	=1'b1;		// increment by 2
+							load	=1'b1; // select pc+2
+
+					// Register file control signals
+							w_E_R	=1'b1;		 // to write imm in R[rb] 
+							w_Add_S_R	=1'b1;	 // to select rb
+							w_Data_S_R	= 3'h0;	 // to select memory output
+
+					// Alu control signals
+							Alu_Op	= 4'h15; // we don't need to aluop
+
+					// Data memory control signals
+							w_E_M	=1'b0; //we will read from memory
+							w_Add_S_M	=1'b0; // select effective adderess(imm)
+							w_Data_S_M	=1'b0; // we don't use it
+
+					end
+
+					2'h2: begin //STD ( M[ea] ←R[rb])
+
+						E_Pc	=1'b1;	// high to pass data
+						E_Imm	=1'b1;		// increment by 2
+						load	=1'b1; // select pc+2
+
+					// Register file control signals
+							w_E_R	=1'b0;		// read from register
+							w_Add_S_R	=1'b1;	// choose rb 
+							w_Data_S_R	= 3'h0;	 // we don't use it
+
+					// Alu control signals
+							Alu_Op	= 4'h1; // to pass R[rb]
+
+					// Data memory control signals
+							w_E_M	=1'b1; // to write in memory
+							w_Add_S_M	=1'b0;  // to choose effective address (imm)
+							w_Data_S_M	=1'b0; // to choose R[rb] data from alu out
+
+					end
+
+					default: begin
+
+					// pc control signals 
+							S_Target	=2'b00;
 							E_Pc	=1'b0;	
 							E_Imm	=1'b0;		
 							load	=1'b0;
@@ -677,61 +713,6 @@ always @(*)	begin
 							w_E_M	=1'b0;
 							w_Add_S_M	=1'b0;
 							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
-					end
-
-					2'h2: begin
-
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
-					end
-
-					2'h3: begin
-
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
 
 					end
 				
@@ -739,60 +720,56 @@ always @(*)	begin
 
 			end
 
-			4'hD: begin
+			4'hD: begin //LDI(R[rb] ← M[R[ra]])
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// pc control signals (pc+1->pc)
+					
+					E_Pc	=1'b1;	 // high to pass data
+					E_Imm	=1'b0;	 // to increment 1	
+					load	=1'b1;  // select pc+1
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	= 3'h0;	
+					w_E_R	=1'b1;		// write in reg file
+					w_Add_S_R	=1'b1;	// write in rb
+					w_Data_S_R	= 3'h0;	 // data from memory output
 
 			// Alu control signals
-					Alu_Op	= 4'h0;
+					Alu_Op	= 4'h14; // pass R[ra]
 
 			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
+					w_E_M	=1'b0; // read from memory 
+					w_Add_S_M	=1'b1;  //to choose alu out 
+					w_Data_S_M	=1'b0; // we don't use it
 
-					Out_E	=1'b0;
+					
 
 			end
 
-			4'hE: begin
+			4'hE: begin    // STI (M[R[ra]] ←R[rb])
 
 			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+					E_Pc	=1'b1;	 // high to pass data
+					E_Imm	=1'b0;	 // to increment 1	
+					load	=1'b1;  // select pc+1
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	= 3'h0;	
-
+					w_E_R	=1'b0;	 // read from reg file	
+					w_Add_S_R	=1'b1;	// we don't use it
+					w_Data_S_R	= 3'h0;	 // we don't use it
 			// Alu control signals
-					Alu_Op	= 4'h0;
+					Alu_Op	= 4'h14; // pass R[ra]
 
 			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					w_E_M	=1'b1; // write in memory
+					w_Add_S_M	=1'b0; // choose mux with (alu_ot , R[rb])
+					w_data_S_M_rb=1'b1; // select R[rb]
 
 			end			
 
 			default : begin
 
 			// pc control signals 
-					S_Taeget	=2'b00;
+					S_Target	=2'b00;
 					E_Pc	=1'b0;	
 					E_Imm	=1'b0;		
 					load	=1'b0;
