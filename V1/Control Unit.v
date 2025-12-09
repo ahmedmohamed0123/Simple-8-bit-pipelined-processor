@@ -26,6 +26,7 @@ module Control_Unit (
 
 		// Data memory control signals
 		output reg			w_E_M,		// Write enable for Data memory
+		output reg			w_SP,		// Write enable for Data memory in stack
 		output reg			w_Add_S_M,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
 		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: ALU out, 1: PC+1)
  
@@ -816,6 +817,7 @@ always @(*)	begin
 		endcase
 		
 end
+
 
 
 endmodule
