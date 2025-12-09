@@ -1,7 +1,8 @@
 module DataMEM (
     input  wire        Clk,
     input  wire        rst_n,
-    input  wire        WE,          // Write Enable 
+    input  wire        WE,          // Write Enable
+    input  wire        W_Sp,        // Write using Stack
     input  wire [7:0]  Sp,          // Stack pointer
     input  wire [7:0]  A,           // Address
     input  wire [7:0]  WD,          // Write data
@@ -24,8 +25,12 @@ module DataMEM (
                 mem[i]=8'h00;
             end
         end
-        if (WE)
+        if (W_Sp)begin 
+            mem[Sp] <= WD;
+        end
+        else if (WE) begin 
             mem[A] <= WD;
+        end
    
     end
     
