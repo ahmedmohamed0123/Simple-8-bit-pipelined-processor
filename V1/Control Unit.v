@@ -672,7 +672,6 @@ always @(*)	begin
 					// Data memory control signals
 							w_E_M	=1'b0; //we will read from memory
 							w_Add_S_M	=1'b0; // select effective adderess(imm)
-							w_Data_S_M	=1'b0; // we don't use it
 
 					end
 
@@ -684,8 +683,7 @@ always @(*)	begin
 
 					// Register file control signals
 							w_E_R	=1'b0;		// read from register
-							w_Add_S_R	=1'b1;	// choose rb 
-							w_Data_S_R	= 3'h0;	 // we don't use it
+							w_Add_S_R	=1'b0;	// we don't use it
 
 					// Alu control signals
 							Alu_Op	= 4'h1; // to pass R[rb]
@@ -694,7 +692,6 @@ always @(*)	begin
 							w_E_M	=1'b1; // to write in memory
 							w_Add_S_M	=1'b0;  // to choose effective address (imm)
 							w_Data_S_M	=1'b0; // to choose R[rb] data from alu out
-
 					end
 
 					default: begin
@@ -742,7 +739,7 @@ always @(*)	begin
 
 			// Data memory control signals
 					w_E_M	=1'b0; // read from memory 
-					w_Add_S_M	=1'b1;  //to choose alu out 
+					w_Add_S_M	=1'b1;  // choose alu_out
 					w_Data_S_M	=1'b0; // we don't use it
 
 					
@@ -765,7 +762,8 @@ always @(*)	begin
 
 			// Data memory control signals
 					w_E_M	=1'b1; // write in memory
-					w_Add_S_M	=1'b0; // choose mux with (alu_ot , R[rb])
+					w_Add_S_M	=1'b1;  // choose alu_out
+					w_Data_S_M	=1'b0; // choose mux with (alu_ot , R[rb])
 					w_data_S_M_rb=1'b1; // select R[rb]
 
 			end			
