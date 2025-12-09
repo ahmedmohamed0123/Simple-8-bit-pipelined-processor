@@ -12,12 +12,14 @@ module Pc (
 
 
 always @(posedge clk or negedge rst_n) begin
+
 	if(~rst_n) begin
 		Pc <= 0;
 	end 
+
 	else if (en) begin
 
-		else if (load) begin
+		if (load) begin
 		Pc <= Target;
 		end
 		else if (imm) begin
