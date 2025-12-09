@@ -385,250 +385,165 @@ always @(*)	begin
 
 			case (Opcode[3:2])
 
-					2'h0: begin
-
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
+					2'h0: begin      //JZ
+						E_Pc	=1'b1;
+                          if(CCR[0]==1'b0)   begin   
+				       // pc<--pc+1
 							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
+							load	=1'b1;
+							end
+                           else   begin 
+						// pc<--rb
+						  S_Target	=2'b11;
+						  load	=1'b0;
+                          E_Imm	=1'bx;	
+						end
+			
 					end
 
-					2'h1: begin
-
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
+					2'h1: begin       //JN
+                     E_Pc	=1'b1;
+                          if(CCR[1]==1'b0)   begin
+					 // pc<--pc+1
 							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
+							load	=1'b1;
+							end
+                           else   begin
+					 // pc<--rb
+						  S_Target	=2'b11;
+						  load	=1'b0;
+                          E_Imm	=1'bx;	
+						end
+			
 					end
 
-					2'h2: begin
+					2'h2: begin            //JC
 
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
+					E_Pc	=1'b1;
+                          if(CCR[2]==1'b0)   begin
+					// pc<--pc+1
 							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
+							load	=1'b1;
+							end
+                           else   begin
+					// pc<--rb
+						  S_Target	=2'b11;
+						  load	=1'b0;	
+						end
+			
 					end
 
-					2'h3: begin
-
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
+					2'h3: begin              //JV
+                    E_Pc	=1'b1;
+                          if(CCR[3]==1'b0)   begin
+					// pc<--pc+1
 							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
+							load	=1'b1;
+							end
+                           else   begin
+					// pc<--rb
+						  S_Target	=2'b11;
+						  load	=1'b0;
+						end
+			
 					end
 				
 				endcase
 
 			end
+ 
+			4'hA: begin    //LOOP
+ 
+                 //  ra-1
+					Alu_Op	= 4'b1101;     
 
-			4'hA: begin
-
-			// pc control signals 
-					S_Target	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
-
-			// Register file control signals
-					w_E_R	=1'b0;		
+                //   ra<--alu_output
+					w_E_R	=1'b1;		
 					w_Add_S_R	=1'b0;	
-					w_Data_S_R	= 3'h0;	
+					w_Data_S_R	= 3'h1;	
 
-			// Alu control signals
-					Alu_Op	= 4'h0;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+                    E_Pc	=1'b1;	
+				   if (CCR[0] == 1'b0)begin
+				 //  pc<--rb
+					S_Target	=2'b11;		
+					load	=1'b0;
+				   end
+				   else begin
+				//pc<--pc+1
+                      E_Imm	=1'b0;
+					  load	=1'b1;
+				   end
 
 			end
 
-			4'hB: begin
+			4'hB: begin               
 
 			case (Opcode[3:2])
 
-					2'h0: begin
+					2'h0: begin    //JUMP
 
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
+					//pc<--rb
+							S_Target	=2'b11;
+							E_Pc	=1'b1;		
 							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
 
 					end
 
-					2'h1: begin
+					2'h1: begin       //CALL
 
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
+					   //    pc<--( pc+1)
+							E_Pc	=1'b1;	
 							E_Imm	=1'b0;		
+							load	=1'b1;
+                             
+						 //   sp<--(pc+1)
+						w_E_M	=1'bx;
+						w_Add_S_M	=1'b0;
+						w_Data_S_M	=1'b1;
+                        w_SP =1'b1;
+							
+					 // sp=sp-1
+							
+                            DecSp =1'b1;
+                          //  pc<--rb              
+							S_Target	=2'b11;
+							E_Pc	=1'b1;			
 							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
 					end
 
-					2'h2: begin
+					2'h2: begin        //RET
 
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
+					// sp=sp+1
+                            IncSp=1'b1;
+				     
+					   //  pc<--sp             
+							S_Target	=2'b10;
+							E_Pc	=1'b1;			
 							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
 					end
 
-					2'h3: begin
+					2'h3: begin            //RTI
 
-					// pc control signals 
-							S_Target	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
+                      
+					//     sp=sp+1
+                            IncSp=1'b1;
+				     
+					   //     pc<--sp             
+							S_Target	=2'b10;
+							E_Pc	=1'b1;		
 							load	=1'b0;
 
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
+                    
 
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
+					  //    restore flag
+							
+                            returnF =1'b1;
 					end
 				
 				endcase
 
 			end
+
 
 /*------------------------------------- L-Format -------------------------------------*/
 
