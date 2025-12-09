@@ -6,10 +6,10 @@ module Control_Unit (
 
 		input wire 	[7:0]	Opcode,
 		input wire 	[3:0]	CCR, 
-
+az
 		
 		// pc control signals 
-		output reg	[1:0]	S_Taeget, 	// to chose the taget into pc
+		output reg	[1:0]	S_Target, 	// to choose the target into pc
 		output reg			E_Pc,		// change pc or not
 		output reg			E_Imm,		// increment pc 1 or 2
 		output reg			load,		// Load target or increment
@@ -60,29 +60,16 @@ always @(*)	begin
 
 		case (Opcode[7:4])
 
-			4'h0: begin
+			4'h0: begin                    //NOP
 
 			// pc control signals 	
 					E_Pc	=1'b1;		
 					E_Imm	=1'b0;		
 					load	=1'b0;
 
-			// Register file control signals
-					w_E_R	=1'b0;	
-
-			// Alu control signals
-					Alu_Op	= 3'b000;
-
-			// Data memory control signals
-					w_E_M	=	1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
-
 			end
 
-			4'h1: begin
+			4'h1: begin                    //MOV
 
 			// pc control signals 
 					S_Taeget	=2'b00;
