@@ -800,8 +800,8 @@ always @(*)	begin
 
 					// pc control signals 
 							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
+							E_Pc	=1'b1;	
+							E_Imm	=1'b1;		
 							load	=1'b0;
 
 					// Register file control signals
