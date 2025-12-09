@@ -54,6 +54,7 @@ always @(*)	begin
 			w_E_M	=1'b0;
 			w_Add_S_M	=1'b0;
 			w_Data_S_M	=1'b0;
+			w_SP		=1'b0;
 
 			Out_E	=1'b0;
 
@@ -228,39 +229,45 @@ always @(*)	begin
 					2'h0: begin                 // PUSH
 
 					// PC control signals   (PC = PC + 1)	
-						E_Pc	= 1'b1;         // Enable PC update		
-						E_Imm	= 1'b0;		    // Increment by 1
-						load	= 1'b1;         // Increment
+							E_Pc	= 1'b1;         // Enable PC update		
+							E_Imm	= 1'b0;		    // Increment by 1
+							load	= 1'b1;         // Increment
+
+					// Register file control signals
+							DecSp 	= 1'b1  // decrement sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;     // Pass B to output
 
 					// Data memory control signals
-							w_E_M	= 1'b1;
-							w_Add_S_M	= 1'b0;
-							w_Data_S_M	= 1'b0;
+							w_E_M	= 1'b0;     // don't use adderss 
+							w_Add_S_M	= 1'b0;	// don't care
+							w_Data_S_M	= 1'b0; // Alu output
+							w_SP		= 1'b1;	// using sp ass adderss
 
 					end
 
 					2'h1: begin              // POP
 
 					// PC control signals   (PC = PC + 1)	
-						E_Pc	= 1'b1;         // Enable PC update		
-						E_Imm	= 1'b0;		    // Increment by 1
-						load	= 1'b1;         // Increment
+							E_Pc	= 1'b1;         // Enable PC update		
+							E_Imm	= 1'b0;		    // Increment by 1
+							load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
+							w_E_R	=1'b1;			// write in rf
+							w_Add_S_R	=1'b1;		// write in rb as address
+							w_Data_S_R	= 3'h2;		// write drom stack
+							IncSp 	= 1'b1  		// Increment sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;
 
 					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
+							w_E_M	=1'b0;  		// don't care
+							w_Add_S_M	=1'b0;		// don't care
+							w_Data_S_M	=1'b0;		// don't care
+							
 
 							Out_E	=1'b0;
 
@@ -821,3 +828,4 @@ end
 
 
 endmodule
+
