@@ -1,6 +1,5 @@
 // any S means Selection line to mux 
-// any E means Enable 
-
+// any E means Enable (0: disable, 1: enable)
 
 module Control_Unit (
 
@@ -8,17 +7,17 @@ module Control_Unit (
 		input wire 	[3:0]	CCR,
 		
 		// pc control signals 
-		output reg	[1:0]	S_Target, 	// to choose the target into pc
-		output reg			E_Pc,		// change pc or not
-		output reg			E_Imm,		// increment pc 1 or 2
-		output reg			load,		// Load target or increment
+		output reg	[1:0]	S_Target, 	// to choose the target into pc ( 0: M[0], 1: M[1], 2: X[SP], 3: R[rb] )
+		output reg			E_Pc,		// change pc or not             
+		output reg			E_Imm,		// increment pc 1 or 2          (0: increment 1, 1: increment 2 )
+		output reg			load,		// Load target or increment     (0: load target, 1: increment )
 
 		// Register file control signals
 		output reg			w_E_R,		// Write enable for Reg file
 		output reg			IncSp,		// enable for increment sp in Reg file
 		output reg			DecSp,		// enable for Decrement sp in Reg file
-		output reg			w_Add_S_R,	// Write address selection for aReg file
-		output reg	[2:0]	w_Data_S_R,	// Write Data selection for aReg file
+		output reg			w_Add_S_R,	// Write address selection for Reg file   (0: ra, 1: rb)
+		output reg	[2:0]	w_Data_S_R,	// Write Data selection for Reg file      (0: Mem, 1: ALU out , 2: SP, 3: INPUT, 4: IMM)
 
 		// Alu control signals
 		output reg 	[3:0]	Alu_Op,    	// Alu opcode
@@ -27,8 +26,8 @@ module Control_Unit (
 
 		// Data memory control signals
 		output reg			w_E_M,		// Write enable for Data memory
-		output reg			w_Add_S_M,	// Write address selection for Data memory
-		output reg			w_Data_S_M,	// Write Data selection for Data memory
+		output reg			w_Add_S_M,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
+		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: ALU out, 1: PC+1)
  
 		output reg			Out_E		// Enable for Output port
 	);
@@ -369,7 +368,6 @@ always @(*)	begin
 					// Alu control signals
 							Alu_Op	= 4'hC;     // DEC
 
-
 					end
 				
 				endcase
@@ -626,6 +624,8 @@ always @(*)	begin
 				endcase
 
 			end
+
+/*------------------------------------- L-Format -------------------------------------*/
 
 			4'hC: begin
 
