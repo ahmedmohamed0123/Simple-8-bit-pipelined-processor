@@ -26,6 +26,7 @@ module Control_Unit (
 
 		// Data memory control signals
 		output reg			w_E_M,		// Write enable for Data memory
+		output reg			w_SP,		// Write enable for Data memory in stack
 		output reg			w_Add_S_M,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
 		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: Mux for Alu_out & R[rb], 1: PC+1)
         output reg          w_data_S_M_rb // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
@@ -53,7 +54,6 @@ always @(*)	begin
 			w_E_M	=1'b0;
 			w_Add_S_M	=1'b0;
 			w_Data_S_M	=1'b0;
-			w_data_S_M_rb=1'b0;
 
 			Out_E	=1'b0;
 
@@ -228,9 +228,12 @@ always @(*)	begin
 					2'h0: begin                 // PUSH
 
 					// PC control signals   (PC = PC + 1)	
-						E_Pc	= 1'b1;         // Enable PC update		
-						E_Imm	= 1'b0;		    // Increment by 1
-						load	= 1'b1;         // Increment
+							E_Pc	= 1'b1;         // Enable PC update		
+							E_Imm	= 1'b0;		    // Increment by 1
+							load	= 1'b1;         // Increment
+
+					// Register file control signals
+							DecSp 	= 1'b1  // decrement sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;     // Pass B to output
@@ -239,20 +242,21 @@ always @(*)	begin
 							w_E_M	= 1'b1;
 							w_Add_S_M	= 1'b0;
 							w_Data_S_M	= 1'b0;
-                            w_data_S_M_rb=1'b0;
+
 					end
 
 					2'h1: begin              // POP
 
 					// PC control signals   (PC = PC + 1)	
-						E_Pc	= 1'b1;         // Enable PC update		
-						E_Imm	= 1'b0;		    // Increment by 1
-						load	= 1'b1;         // Increment
+							E_Pc	= 1'b1;         // Enable PC update		
+							E_Imm	= 1'b0;		    // Increment by 1
+							load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	= 3'h0;	
+							w_E_R	=1'b1;			// write in rf
+							w_Add_S_R	=1'b1;		// write in rb as address
+							w_Data_S_R	= 3'h2;		// write drom stack
+							IncSp 	= 1'b1  		// Increment sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;
@@ -261,7 +265,7 @@ always @(*)	begin
 							w_E_M	=1'b0;
 							w_Add_S_M	=1'b0;
 							w_Data_S_M	=1'b0;
-                            w_data_S_M_rb=1'b0;
+
 							Out_E	=1'b0;
 
 					end
@@ -795,4 +799,6 @@ always @(*)	begin
 end
 
 
+
 endmodule
+
