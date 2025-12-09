@@ -5,11 +5,10 @@
 module Control_Unit (
 
 		input wire 	[7:0]	Opcode,
-		input wire 	[3:0]	CCR, 
-
+		input wire 	[3:0]	CCR,
 		
 		// pc control signals 
-		output reg	[1:0]	S_Taeget, 	// to chose the taget into pc
+		output reg	[1:0]	S_Target, 	// to choose the target into pc
 		output reg			E_Pc,		// change pc or not
 		output reg			E_Imm,		// increment pc 1 or 2
 		output reg			load,		// Load target or increment
@@ -46,10 +45,10 @@ always @(*)	begin
 	// Register file control signals
 			w_E_R	=1'b0;		
 			w_Add_S_R	=1'b0;	
-			w_Data_S_R	=2'b00;	
+			w_Data_S_R	= 3'h0;	
 
 	// Alu control signals
-			Alu_Op	=3'b000;
+			Alu_Op	= 4'h0;
 
 	// Data memory control signals
 			w_E_M	=1'b0;
@@ -59,259 +58,162 @@ always @(*)	begin
 			Out_E	=1'b0;
 
 		case (Opcode[7:4])
+		
+/*------------------------------------- A-Format -------------------------------------*/
 
-			4'h0: begin
+			4'h0: begin                    //NOP
 
-			// pc control signals 	
-					E_Pc	=1'b1;		
-					E_Imm	=1'b0;		
-					load	=1'b0;
-
-			// Register file control signals
-					w_E_R	=1'b0;	
-
-			// Alu control signals
-					Alu_Op	= 3'b000;
-
-			// Data memory control signals
-					w_E_M	=	1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;          // Enable PC update		
+					E_Imm	= 1'b0;		     // Increment by 1
+					load	= 1'b1;          // Increment
 
 			end
 
-			4'h1: begin
+			4'h1: begin                    //MOV
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;         // Enable PC update		
+					E_Imm	= 1'b0;		    // Increment by 1
+					load	= 1'b1;         // Increment
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_E_R	    = 1'b1;     // Enable write to Reg file		
+					w_Add_S_R	= 1'b0;	    // Select Ra address from instruction
+					w_Data_S_R	= 3'h1;	    // Select ALU output as data to write
 
 			// Alu control signals
-					Alu_Op	=3'b000;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					Alu_Op	= 4'h0;      // Pass B to output
 
 			end
 
-			4'h2: begin
+			4'h2: begin                    //ADD
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;         // Enable PC update		
+					E_Imm	= 1'b0;		    // Increment by 1
+					load	= 1'b1;         // Increment
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_E_R	    = 1'b1;     // Enable write to Reg file		
+					w_Add_S_R	= 1'b0;	    // Select Ra address from instruction
+					w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					Alu_Op	= 4'h1;         // Addition
 
 			end
 
-			4'h3: begin
+			4'h3: begin                     //SUB
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;         // Enable PC update		
+					E_Imm	= 1'b0;		    // Increment by 1
+					load	= 1'b1;         // Increment
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_E_R	    = 1'b1;     // Enable write to Reg file		
+					w_Add_S_R	= 1'b0;	    // Select Ra address from instruction
+					w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					Alu_Op	= 4'h2;         // Subtraction
 
 			end
 
-			4'h4: begin
+			4'h4: begin                     //AND
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;         // Enable PC update		
+					E_Imm	= 1'b0;		    // Increment by 1
+					load	= 1'b1;         // Increment
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_E_R	    = 1'b1;     // Enable write to Reg file		
+					w_Add_S_R	= 1'b0;	    // Select Ra address from instruction
+					w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					Alu_Op	= 4'h3;         // AND
 
 			end
 
-			4'h5: begin
+			4'h5: begin                     //OR
 
-			// pc control signals 
-					S_Taeget	=2'b00;
-					E_Pc	=1'b0;	
-					E_Imm	=1'b0;		
-					load	=1'b0;
+			// PC control signals   (PC = PC + 1)	
+					E_Pc	= 1'b1;         // Enable PC update		
+					E_Imm	= 1'b0;		    // Increment by 1
+					load	= 1'b1;         // Increment
 
 			// Register file control signals
-					w_E_R	=1'b0;		
-					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_E_R	    = 1'b1;     // Enable write to Reg file		
+					w_Add_S_R	= 1'b0;	    // Select Ra address from instruction
+					w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
-
-			// Data memory control signals
-					w_E_M	=1'b0;
-					w_Add_S_M	=1'b0;
-					w_Data_S_M	=1'b0;
-
-					Out_E	=1'b0;
+					Alu_Op	= 4'h4;         // OR
 
 			end
 
 			4'h6: begin
 
-				case (Opcode[3:2])
+				case (Opcode[3:2])         // Depending on ra value
 
-					2'h0: begin
+					2'h0: begin            //RLC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+						Alu_Op	= 4'h5;         // Rotate Left with Carry (RLC)
 
 					end
 
-					2'h1: begin
+					2'h1: begin                 // RRC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+						Alu_Op	= 4'h6;         // Rotate Right with Carry (RRC)
 
 					end
 
-					2'h2: begin
+					2'h2: begin                  // SETC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+						Alu_Op	= 4'h7;         // SETC
 
 					end
 
-					2'h3: begin
+					2'h3: begin                // CLRC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+						Alu_Op	= 4'h8;         // CLRC
 
 					end
 				
@@ -321,23 +223,39 @@ always @(*)	begin
 
 			4'h7: begin
 
-			case (Opcode[3:2])
+			case (Opcode[3:2])                  // Depending on ra value
 
-					2'h0: begin
+					2'h0: begin                 // PUSH
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
+
+					// Alu control signals
+							Alu_Op	= 4'h0;     // Pass B to output
+
+					// Data memory control signals
+							w_E_M	= 1'b1;
+							w_Add_S_M	= 1'b0;
+							w_Data_S_M	= 1'b0;
+
+					end
+
+					2'h1: begin              // POP
+
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -345,85 +263,35 @@ always @(*)	begin
 							w_Data_S_M	=1'b0;
 
 							Out_E	=1'b0;
+
+					end
+
+					2'h2: begin            // OUT
+
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
+
+					// Alu control signals
+							Alu_Op	= 4'h0;     // Pass B to output
+
+							Out_E	=1'b1;      // Enable output port
 
 
 					end
 
-					2'h1: begin
+					2'h3: begin           // IN
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
-
-					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
-					end
-
-					2'h2: begin
-
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
-
-					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
-
-					end
-
-					2'h3: begin
-
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
-
-					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
-
-					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h3;	    // Select INPUT port as data to write		
 
 					end
 				
@@ -433,108 +301,73 @@ always @(*)	begin
 
 			4'h8: begin
 
-			case (Opcode[3:2])
+			case (Opcode[3:2])                   // Depending on ra value
 
-					2'h0: begin
+					2'h0: begin                  // NOT
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write		
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+							Alu_Op	= 4'h9;     // NOT
 
 					end
 
-					2'h1: begin
+					2'h1: begin                 // NEG
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write		
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+							Alu_Op	= 4'hA;     // NEG
 
 					end
 
-					2'h2: begin
+					2'h2: begin                 // INC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write		
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+							Alu_Op	= 4'hB;     // INC
 
 					end
 
-					2'h3: begin
+					2'h3: begin                 // DEC
 
-					// pc control signals 
-							S_Taeget	=2'b00;
-							E_Pc	=1'b0;	
-							E_Imm	=1'b0;		
-							load	=1'b0;
+					// PC control signals   (PC = PC + 1)	
+						E_Pc	= 1'b1;         // Enable PC update		
+						E_Imm	= 1'b0;		    // Increment by 1
+						load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b0;		
-							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+						w_E_R	    = 1'b1;     // Enable write to Reg file		
+						w_Add_S_R	= 1'b1;	    // Select Rb address from instruction
+						w_Data_S_R	= 3'h1;	    // Select ALU output as data to write		
 
 					// Alu control signals
-							Alu_Op	=3'b000;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
+							Alu_Op	= 4'hC;     // DEC
 
 
 					end
@@ -542,6 +375,8 @@ always @(*)	begin
 				endcase
 
 			end
+
+/*------------------------------------- B-Format -------------------------------------*/
 
 			4'h9: begin
 
@@ -558,10 +393,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -584,10 +419,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -610,10 +445,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -636,10 +471,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -666,10 +501,10 @@ always @(*)	begin
 			// Register file control signals
 					w_E_R	=1'b0;		
 					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_Data_S_R	= 3'h0;	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
+					Alu_Op	= 4'h0;
 
 			// Data memory control signals
 					w_E_M	=1'b0;
@@ -695,10 +530,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -721,10 +556,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -747,10 +582,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -773,10 +608,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -807,10 +642,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -833,10 +668,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -859,10 +694,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -885,10 +720,10 @@ always @(*)	begin
 					// Register file control signals
 							w_E_R	=1'b0;		
 							w_Add_S_R	=1'b0;	
-							w_Data_S_R	=2'b00;	
+							w_Data_S_R	= 3'h0;	
 
 					// Alu control signals
-							Alu_Op	=3'b000;
+							Alu_Op	= 4'h0;
 
 					// Data memory control signals
 							w_E_M	=1'b0;
@@ -915,10 +750,10 @@ always @(*)	begin
 			// Register file control signals
 					w_E_R	=1'b0;		
 					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_Data_S_R	= 3'h0;	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
+					Alu_Op	= 4'h0;
 
 			// Data memory control signals
 					w_E_M	=1'b0;
@@ -940,10 +775,10 @@ always @(*)	begin
 			// Register file control signals
 					w_E_R	=1'b0;		
 					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_Data_S_R	= 3'h0;	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
+					Alu_Op	= 4'h0;
 
 			// Data memory control signals
 					w_E_M	=1'b0;
@@ -965,10 +800,10 @@ always @(*)	begin
 			// Register file control signals
 					w_E_R	=1'b0;		
 					w_Add_S_R	=1'b0;	
-					w_Data_S_R	=2'b00;	
+					w_Data_S_R	= 3'h0;	
 
 			// Alu control signals
-					Alu_Op	=3'b000;
+					Alu_Op	= 4'h0;
 
 			// Data memory control signals
 					w_E_M	=1'b0;

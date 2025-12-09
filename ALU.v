@@ -1,9 +1,9 @@
 module ALU 
 (
     input clk, rst,                 //Clock and Reset for sequential logic in CCR 
-    input  [7:0] A, B,
+    input [7:0] A, B,
     input [3:0] ALU_opcode,
-    output reg  [7:0] out,    //Combinational output
+    output reg  [7:0] out,          //Combinational output
     output reg Z,N,C,V              //Combinational output flags
 );
 
@@ -81,7 +81,7 @@ always @(*) begin
         end
 
         4'b1010: begin                           //NEG
-            out = !B + 1;
+            out = ~B + 1;
             N = out[7];                                          
             Z = !out ? 1 : 0; 
         end
