@@ -108,6 +108,15 @@ ALU dut(.clk(clk),.rst(rst),.A(A),.B(B),.ALU_opcode(ALU_opcode),.out(out),.Z(Z),
     else begin 
         $display ("error at A=%d , B=%d at time=%t",A,B,$time);
     end
+    ALU_opcode=4'b0001;
+    A=1; B=-1;
+    @(negedge clk);
+    if(dut.CCR[0]==1 && dut.CCR[1]==0 && dut.CCR[2]==0 && dut.CCR[3]==0) begin 
+        $display("Correct output !");
+    end
+    else begin 
+        $display ("error at A=%d , B=%d at time=%t",A,B,$time);
+    end
     /*
     ALU_opcode=4'b0111; //--> SETC
     @(negedge clk) ;

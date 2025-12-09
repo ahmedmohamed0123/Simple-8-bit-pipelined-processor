@@ -1,7 +1,9 @@
 m255
 K4
 z2
-!s99 nomlopt
+Z0 !s99 nomlopt
+R0
+R0
 !s11f vlog 2021.1 2021.01, Jan 19 2021
 13
 !s112 1.1
@@ -9,59 +11,70 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-dC:/questasim64_2021.1/examples
+Z1 dC:/questasim64_2021.1/examples
 T_opt
 !s110 1764927611
 V`>24IL=>mzMG6[KUnZ:P20
-04 6 4 work alu_tb fast 0
+Z2 04 6 4 work alu_tb fast 0
 =1-04bf1b301b1e-6932a87b-0-39f4
-!s124 OEM100
-o-quiet -auto_acc_if_foreign -work work +acc
-Z0 tCvgOpt 0
+Z3 !s124 OEM100
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+Z5 tCvgOpt 0
 n@_opt
-OL;O;2021.1;73
-vALU
-Z1 !s110 1764927603
-!i10b 1
-!s100 <YjQcW]AN:PY93aENE?C^3
-I0@]N7eHhOLfhCQkZZgW[G1
-Z2 dC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor
-w1764903836
-8C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU.v
-FC:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU.v
-!i122 0
-L0 1 117
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-Z4 OL;L;2021.1;73
-r1
-!s85 0
-31
-Z5 !s108 1764927603.000000
-!s107 C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU.v|
-!i113 0
-Z6 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R0
-n@a@l@u
-valu_tb
+Z6 OL;O;2021.1;73
 R1
-!i10b 1
-!s100 LGEYLiV6b86I16?TRa[=13
-IGmO9jlBQIV42BbBMIFb^`0
+T_opt1
+!s110 1765127948
+VKiza`oIkQfoZA[hB>6JOU1
 R2
-w1764927520
-8C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU_tb.v
-FC:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU_tb.v
-!i122 1
-L0 1 174
+=1-04bf1b301b1e-6935b70b-358-4478
 R3
 R4
+R5
+n@_opt1
+R6
+vALU
+!s110 1765127943
+!i10b 1
+!s100 _eGRE@hhTz2IS[4bkz2^O1
+IV5GBQYaOb^a?NZS[4ekb92
+Z7 dC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor
+w1765127925
+8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v
+FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v
+!i122 4
+L0 1 117
+Z8 VDg1SIo80bB@j0V0VzS_@n1
+Z9 OL;L;2021.1;73
 r1
 !s85 0
 31
-R5
-!s107 C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU_tb.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:\githup_repo\8_bit pipelined proccesor\Simple-8-bit-pipelined-processor\ALU_tb.v|
+!s108 1765127943.000000
+!s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v|
 !i113 0
-R6
-R0
+Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@a@l@u
+valu_tb
+!s110 1765127044
+!i10b 1
+!s100 >6[oaf<G4C7;ElP`;Q9zW1
+Ic2o_c`PmCN2Y[YDUdo4DN0
+R7
+w1765127006
+8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.v
+FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.v
+!i122 3
+L0 1 184
+R8
+R9
+r1
+!s85 0
+31
+!s108 1765127044.000000
+!s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.v|
+!i113 0
+R10
+R5

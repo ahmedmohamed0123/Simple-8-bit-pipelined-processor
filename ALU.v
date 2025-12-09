@@ -1,9 +1,9 @@
 module ALU 
 (
     input clk, rst,                 //Clock and Reset for sequential logic in CCR 
-    input signed [7:0] A, B,
+    input  [7:0] A, B,
     input [3:0] ALU_opcode,
-    output reg signed [7:0] out,    //Combinational output
+    output reg  [7:0] out,    //Combinational output
     output reg Z,N,C,V              //Combinational output flags
 );
 
