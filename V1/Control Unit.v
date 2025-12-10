@@ -29,7 +29,7 @@ module Control_Unit (
 		output reg			w_SP,		// Write enable for Data memory in stack
 		output reg			w_Add_S_M,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
 		output reg			w_Data_S_M,	// Write Data selection for Data memory       (0: Mux for Alu_out & R[rb], 1: PC+1)
-        output reg          w_data_S_M_rb // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
+        output reg          w_data_S_M_rb, // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
 		output reg			Out_E		// Enable for Output port
 	);
 
@@ -233,7 +233,7 @@ always @(*)	begin
 							load	= 1'b1;         // Increment
 
 					// Register file control signals
-							DecSp 	= 1'b1  // decrement sp before using it
+							DecSp 	= 1'b1;  // decrement sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;     // Pass B to output
@@ -256,7 +256,7 @@ always @(*)	begin
 							w_E_R	=1'b1;			// write in rf
 							w_Add_S_R	=1'b1;		// write in rb as address
 							w_Data_S_R	= 3'h2;		// write drom stack
-							IncSp 	= 1'b1  		// Increment sp before using it
+							IncSp 	= 1'b1; 		// Increment sp before using it
 
 					// Alu control signals
 							Alu_Op	= 4'h0;
@@ -563,8 +563,7 @@ always @(*)	begin
 							w_Add_S_R	=1'b1;	 // to select rb
 							w_Data_S_R	= 3'h4;	 // to select imm
 
-					// Alu control signals
-							Alu_Op	= 4'h15; // we don't need to aluop
+	
 
 
 					end
@@ -580,9 +579,6 @@ always @(*)	begin
 							w_E_R	=1'b1;		 // to write imm in R[rb] 
 							w_Add_S_R	=1'b1;	 // to select rb
 							w_Data_S_R	= 3'h0;	 // to select memory output
-
-					// Alu control signals
-							Alu_Op	= 4'h15; // we don't need to aluop
 
 					// Data memory control signals
 							w_E_M	=1'b0; //we will read from memory
@@ -601,7 +597,7 @@ always @(*)	begin
 							w_Add_S_R	=1'b0;	// we don't use it
 
 					// Alu control signals
-							Alu_Op	= 4'h; // to pass R[rb]
+							Alu_Op	= 4'h1; // to pass R[rb]
 
 					// Data memory control signals
 							w_E_M	=1'b1; // to write in memory
@@ -650,12 +646,15 @@ always @(*)	begin
 					w_Data_S_R	= 3'h0;	 // data from memory output
 
 			// Alu control signals
-					Alu_Op	= 4'h14; // pass R[ra]
+					Alu_Op	= 4'hE; // pass R[ra]
 
 			// Data memory control signals
 					w_E_M	=1'b0; // read from memory 
 					w_Add_S_M	=1'b1;  // choose alu_out
 					w_Data_S_M	=1'b0; // we don't use it
+
+					
+
 			end
 
 			4'hE: begin    // STI (M[R[ra]] ←R[rb])
@@ -670,7 +669,7 @@ always @(*)	begin
 					w_Add_S_R	=1'b1;	// we don't use it
 					w_Data_S_R	= 3'h0;	 // we don't use it
 			// Alu control signals
-					Alu_Op	= 4'h14; // pass R[ra]
+					Alu_Op	= 4'hE; // pass R[ra]
 
 			// Data memory control signals
 					w_E_M	=1'b1; // write in memory
