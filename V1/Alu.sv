@@ -4,11 +4,11 @@ module ALU
     input wire                  rst,                // Clock and Reset for sequential logic in CCR 
     input wire                  saveF,              // save flages in [7:4] if interupt came
     input wire                  returnF,           // returen flags 
-    input wire [7:0]    A, 
-    input wire  [7:0]    B,
-    input wire         [3:0]    ALU_opcode,
+    input wire       [7:0]      A, 
+    input wire       [7:0]      B,
+    input wire       [3:0]       ALU_opcode,
 
-    output reg  [7:0]    out,                //Combinational output
+    output reg       [7:0]      out,                //Combinational output
     output reg                  Z,N,C,V             //Combinational output flags
 );
 
