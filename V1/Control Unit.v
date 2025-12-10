@@ -590,7 +590,7 @@ always @(*)	begin
 
 					end
 
-					2'h2: begin //STD ( M[ea] ←R[rb])
+					2'h2: begin //STD ( M[ea] ← R[rb])
 
 						E_Pc	=1'b1;	// high to pass data
 						E_Imm	=1'b1;		// increment by 2
@@ -601,7 +601,7 @@ always @(*)	begin
 							w_Add_S_R	=1'b0;	// we don't use it
 
 					// Alu control signals
-							Alu_Op	= 4'h1; // to pass R[rb]
+							Alu_Op	= 4'h; // to pass R[rb]
 
 					// Data memory control signals
 							w_E_M	=1'b1; // to write in memory
@@ -656,9 +656,6 @@ always @(*)	begin
 					w_E_M	=1'b0; // read from memory 
 					w_Add_S_M	=1'b1;  // choose alu_out
 					w_Data_S_M	=1'b0; // we don't use it
-
-					
-
 			end
 
 			4'hE: begin    // STI (M[R[ra]] ←R[rb])
