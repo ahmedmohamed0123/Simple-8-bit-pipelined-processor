@@ -40,55 +40,46 @@ R5
 n@_opt1
 R6
 R1
-T_opt2
-!s110 1765284652
-Vb[i4<XjLYNkCj5>DQ:g2L2
-R2
-=1-04bf1b301b1e-69381b2c-65-60c8
-R3
-R4
-R5
-n@_opt2
-R6
-R1
 vALU
-!s110 1765283630
+Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z8 !s110 1765484724
 !i10b 1
-!s100 mW28FYo3gmaINHDE4hPAB2
-IF7XD8z7[LMBi4f1FV;6:j1
-Z7 dC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor
-w1765215003
-8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v
-FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v
-!i122 7
-L0 1 117
-Z8 VDg1SIo80bB@j0V0VzS_@n1
-Z9 OL;L;2021.1;73
+!s100 N5o07JiccjMoeIMK`KAXa3
+I=:ZL3RJbXW0U7`e9i;;3T0
+S1
+Z9 dC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor
+Z10 w1765484453
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Alu.sv
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Alu.sv
+!i122 18
+L0 1 136
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2021.1;73
 r1
 !s85 0
 31
-!s108 1765283630.000000
-!s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v|
+Z13 !s108 1765484724.000000
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Alu.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Alu.sv|
 !i113 0
-Z10 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z14 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R5
 n@a@l@u
 valu_tb
-DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R7
 !s110 1765284646
 !i10b 1
 !s100 Azb2D640M7<7G:Bb:J[2W1
 I61OAz;<5Nf]iI]JDlmF@40
 S1
-R7
+dC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor
 w1765284342
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv
 !i122 12
 L0 3 118
-R8
-R9
+R11
+R12
 r1
 !s85 0
 31
@@ -96,28 +87,150 @@ r1
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv|
 !i113 0
-o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R14
 R5
 vControl_Unit
-!s110 1765387598
-!i10b 1
-!s100 X:NKTbkG4NH;Yf1O<<Q^g1
-IK4ITA1A4KAcV9Dh<V<bP10
-R7
-w1765382926
-8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v
-FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v
-!i122 13
-L0 4 709
 R8
+!i10b 1
+!s100 P`<e6jfn9Ol>hOIWO8LO20
+IE:0i[E1QK9IjXa:RU1_e;1
 R9
+R10
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Control Unit.v
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Control Unit.v
+!i122 19
+L0 4 712
+R11
+R12
 r1
 !s85 0
 31
-!s108 1765387598.000000
-!s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v|
-!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v|
+R13
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Control Unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Control Unit.v|
 !i113 0
-R10
+Z15 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R5
 n@control_@unit
+vDataMEM
+R7
+R8
+!i10b 1
+!s100 9ebSVWkbndzL?ok66jKTL0
+I_`TTaL?kg`LfcY4^`nMI71
+S1
+R9
+R10
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Datamemory.sv
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Datamemory.sv
+!i122 20
+Z16 L0 1 49
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Datamemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Datamemory.sv|
+!i113 0
+R14
+R5
+n@data@m@e@m
+vinstr_mem
+R7
+R8
+!i10b 1
+!s100 a]KP0i?X=AI?=n;i=MQ;]1
+I271:NO>l<L03<T2ine@Sb3
+S1
+R9
+Z17 w1765270267
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/InstructionMemory.sv
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/InstructionMemory.sv
+!i122 21
+L0 1 23
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/InstructionMemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/InstructionMemory.sv|
+!i113 0
+R14
+R5
+vPc
+R8
+!i10b 1
+!s100 ok7DFo6PYajY>6EbTTWl?2
+ID3hAUCH9R;S8EYVTP_i[H1
+R9
+R10
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Pc.v
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Pc.v
+!i122 22
+R16
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Pc.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Pc.v|
+!i113 0
+R15
+R5
+n@pc
+vRegFile
+R7
+R8
+!i10b 1
+!s100 DZPz>OjB_ICO[XAnd4HM`2
+I98K`cnR30A6dPTe;<@m3F3
+S1
+R9
+R17
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Reg file.sv
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Reg file.sv
+!i122 23
+L0 1 61
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Reg file.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/Reg file.sv|
+!i113 0
+R14
+R5
+n@reg@file
+vTop
+R7
+!s110 1765484725
+!i10b 1
+!s100 ?HZNPN:m>7h]fcaBa<z[z1
+I>RLHmmgkg0EPNzR`1l>;B2
+S1
+R9
+R10
+8C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/top.sv
+FC:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/top.sv
+!i122 24
+L0 1 217
+R11
+R12
+r1
+!s85 0
+31
+!s108 1765484725.000000
+!s107 C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/V1/top.sv|
+!i113 0
+R14
+R5
+n@top

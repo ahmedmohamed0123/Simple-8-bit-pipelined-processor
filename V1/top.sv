@@ -171,7 +171,7 @@ module Top (
 
 
 
-	ALU (
+	ALU  (
 
 	    .clk(clk),     
 	    .rst(rst_n),                // Clock and Reset for sequential logic in CCR 
