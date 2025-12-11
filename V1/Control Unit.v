@@ -393,6 +393,7 @@ always @(*)	begin
 							load	=1'b1;
 							end
                            else   begin 
+						  Alu_Op	= 4'h0; // to pass R[rb]
 						// pc<--rb
 						  S_Target	=2'b11;
 						  load	=1'b0;
@@ -409,6 +410,7 @@ always @(*)	begin
 							load	=1'b1;
 							end
                            else   begin
+						  Alu_Op	= 4'h0; // to pass R[rb]
 					 // pc<--rb
 						  S_Target	=2'b11;
 						  load	=1'b0;
@@ -426,6 +428,7 @@ always @(*)	begin
 							load	=1'b1;
 							end
                            else   begin
+						  Alu_Op	= 4'h0; // to pass R[rb]
 					// pc<--rb
 						  S_Target	=2'b11;
 						  load	=1'b0;	
@@ -436,12 +439,13 @@ always @(*)	begin
 					2'h3: begin              //JV
                     E_Pc	=1'b1;
                           if(CCR[3]==1'b0)   begin
-					// pc<--pc+1
+					    // pc<--pc+1
 							E_Imm	=1'b0;		
 							load	=1'b1;
 							end
                            else   begin
-					// pc<--rb
+						  Alu_Op = 4'h0; // to pass R[rb]
+					     // pc<--rb
 						  S_Target	=2'b11;
 						  load	=1'b0;
 						end
@@ -454,22 +458,23 @@ always @(*)	begin
  
 			4'hA: begin    //LOOP
  
-                 //  ra-1
+                    // ra-1
 					Alu_Op	= 4'b1101;     
 
-                //   ra<--alu_output
+                   // ra<--alu_output
 					w_E_R	=1'b1;		
 					w_Add_S_R	=1'b0;	
 					w_Data_S_R	= 3'h1;	
 
                     E_Pc	=1'b1;	
 				   if (CCR[0] == 1'b0)begin
-				 //  pc<--rb
+					Alu_Op	= 4'h0; // to pass R[rb]
+				     //  pc<--rb
 					S_Target	=2'b11;		
 					load	=1'b0;
 				   end
 				   else begin
-				//pc<--pc+1
+				    //pc<--pc+1
                       E_Imm	=1'b0;
 					  load	=1'b1;
 				   end
@@ -481,7 +486,8 @@ always @(*)	begin
 			case (Opcode[3:2])
 
 					2'h0: begin    //JUMP
-
+                    
+					 Alu_Op	= 4'h0; // to pass R[rb]
 					//pc<--rb
 							S_Target	=2'b11;
 							E_Pc	=1'b1;		
@@ -502,9 +508,8 @@ always @(*)	begin
 						w_Data_S_M	=1'b1;
                         w_SP =1'b1;
 							
-					 // sp=sp-1
-							
-                            DecSp =1'b1;
+                         DecSp =1'b1;    // sp=sp-1
+						 Alu_Op	= 4'h0; // to pass R[rb]
                           //  pc<--rb              
 							S_Target	=2'b11;
 							E_Pc	=1'b1;			
@@ -532,8 +537,6 @@ always @(*)	begin
 							S_Target	=2'b10;
 							E_Pc	=1'b1;		
 							load	=1'b0;
-
-                    
 
 					  //    restore flag
 							
