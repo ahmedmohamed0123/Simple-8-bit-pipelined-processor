@@ -70,8 +70,7 @@ module Top (
 		wire 	[7:0]  	Mem_Add;    // Address
       	wire 	[7:0]  	Mem_W_D;    // Write data
      	wire  	[7:0]  	Mem_R_D;    // Memory data
-     	wire  	[7:0]  	Mem_0;     	// Memory data
-     	wire  	[7:0]  	Mem_1;  	// Memory data 
+     	wire  	[7:0]  	mem;  	// Memory data 
     	wire  	[7:0]  	X;          // Stack data
 
 
@@ -83,8 +82,7 @@ module Top (
 		.en(E_Pc),
 		.load(load),
 		.imm(E_Imm),
-		.M0(Mem_0),  
-		.M1(Mem_1),  
+		.mem(mem),  
 		.X(X),   
 		.Alu_out(ALu_Out),   
 		.targer_Sel(S_Target),

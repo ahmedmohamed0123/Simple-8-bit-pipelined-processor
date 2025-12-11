@@ -5,7 +5,7 @@ module Pc (
 		input wire			en,
 		input wire			load,
 		input wire			imm,
-		input wire	[7:0]	mem,  		//M[0] incase reset & M[1]
+		input wire	[7:0]	mem,  		//M[0] incase reset & M[1] incase interrupt
 		input wire	[7:0]	X,   		//SP
 		input wire	[7:0]	Alu_out,   	// Alu_out
 		input wire 	[1:0]  	targer_Sel,
