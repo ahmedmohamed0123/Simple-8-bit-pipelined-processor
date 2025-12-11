@@ -3,18 +3,30 @@ module DataMEM (
     input  wire        rst_n,
     input  wire        WE,          // Write Enable
     input  wire        W_Sp,        // Write using Stack
+    input  wire        W_Z,         // read m[0]
+    input  wire        W_O,         // read m[1]
     input  wire [7:0]  Sp,          // Stack pointer
     input  wire [7:0]  A,           // Address
     input  wire [7:0]  WD,          // Write data
     output reg  [7:0]  RD,          // Memory data 
-    output reg  [7:0]  X            // Stack data
+    output wire [7:0]  X            // Stack data
 );
 
     // 256 x 8-bit memory
     reg [7:0] mem [0:255];
     integer i;
 
-    assign RD = mem[A];
+    always begin
+        if (W_Z) begin
+            RD = mem[0];
+        end
+        else if (W_O) begin
+            RD = mem[1];
+        end
+        else
+            RD = mem[A];
+    end 
+
     assign X  = mem[Sp];
 
         // Synchronous memory operations
