@@ -1,15 +1,22 @@
-{C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv}
+{C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU_tb.sv}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
 -- Compiling module alu_tb
 
 Top level modules:
 	alu_tb
 
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/ALU.v}
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V1/Control Unit.v}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module ALU
+-- Compiling module Control_Unit
 
 Top level modules:
-	ALU
+	Control_Unit
 
 } {} {}}
