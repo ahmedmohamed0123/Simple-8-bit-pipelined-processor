@@ -16,7 +16,7 @@ module DataMEM (
     reg [7:0] mem [0:255];
     integer i;
 
-    always begin
+    always @ (*)begin
         if (W_Z) begin
             RD = mem[0];
         end
