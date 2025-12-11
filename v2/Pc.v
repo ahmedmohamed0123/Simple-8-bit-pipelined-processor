@@ -5,8 +5,7 @@ module Pc (
 		input wire			en,
 		input wire			load,
 		input wire			imm,
-		input wire	[7:0]	M0,  		//M[0] incase reset
-		input wire	[7:0]	M1,  		//M[1] incase interrupt
+		input wire	[7:0]	mem,  		//M[0] incase reset & M[1]
 		input wire	[7:0]	X,   		//SP
 		input wire	[7:0]	Alu_out,   	// Alu_out
 		input wire 	[1:0]  	targer_Sel,
@@ -26,10 +25,10 @@ always @(posedge clk or negedge rst_n) begin
 		
 		if (!load) begin
 			case(targer_Sel)
-              2'b00 :Pc <=M0;
-              2'b01 :Pc <=M1;
+              2'b00 :Pc <=mem;
               2'b10 :Pc <=X;
 			  2'b11 :Pc <=Alu_out;
+			  default:Pc<=Pc;
 			endcase
 		end
 		
