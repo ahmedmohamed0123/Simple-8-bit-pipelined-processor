@@ -252,8 +252,9 @@ always @(*)	begin
 
 					// Data memory control signals
 							w_E_M	= 1'b1;
-							w_Add_S_M	= 1'b0;
+							w_SP=1'b1;
 							w_Data_S_M	= 1'b0;
+							w_data_S_M_rb=1'b0;
 
 					end
 
@@ -269,17 +270,9 @@ always @(*)	begin
 							w_Add_S_R	=1'b1;		// write in rb as address
 							w_Data_S_R	= 3'h2;		// write drom stack
 							IncSp 	= 1'b1; 		// Increment sp before using it
-
-					// Alu control signals
-							Alu_Op	= 4'h0;
-
-					// Data memory control signals
-							w_E_M	=1'b0;
-							w_Add_S_M	=1'b0;
-							w_Data_S_M	=1'b0;
-
-							Out_E	=1'b0;
-
+                    // Register file control signals
+						w_E_R	    = 1'b0;     // Enable write to Reg file		
+						w_SP=1'b0;	    // Select Rb address from instruction
 					end
 
 					2'h2: begin            // OUT

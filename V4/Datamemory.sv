@@ -9,7 +9,7 @@ module DataMEM (
     input  wire [7:0]  A,           // Address
     input  wire [7:0]  WD,          // Write data
     output reg  [7:0]  RD,          // Memory data 
-    output wire [7:0]  X            // Stack data
+    output reg  [7:0]  X            // Stack data
 );
 
 // 256 x 8-bit memory
@@ -38,8 +38,6 @@ module DataMEM (
             
     end 
 
-    assign X  = mem[Sp];
-
         // Synchronous memory operations
     always @(posedge Clk or negedge rst_n) begin
 
@@ -50,6 +48,10 @@ module DataMEM (
         end
         if (W_Sp)begin 
             mem[Sp] <= WD;
+        end 
+        else if (!W_Sp) begin 
+            X<=mem[Sp];
+            mem[Sp]<=0;
         end
         else if (WE) begin 
             mem[A] <= WD;
