@@ -68,6 +68,27 @@ always @(*)	begin
 			W_Z=0;
 			W_O=0;
 			Out_E	=1'b0;
+			
+			if(!rst_n) begin  //(M[0]->pc)
+
+            	// PC control signals  	
+					E_Pc	= 1'b1;          // Enable PC update		
+					S_Target=2'b00; // to select M[0]
+					load	= 1'b0;          //pass target selection 
+					// Data memory control signals
+					W_Z=1'b1; // to read M[0]
+			end
+			else if(interrupt) begin //(M[1]->pc)
+				// PC control signals   	
+					E_Pc	= 1'b1;          // Enable PC update		
+					S_Target=2'b01; // to select M[1]
+					load	= 1'b0;          //pass target selection 
+					// Data memory control signals
+					W_O=1'b1; // to read M[1]
+			end
+
+      else begin
+
 
 		case (Opcode[7:4])
 		
@@ -714,7 +735,7 @@ always @(*)	begin
 		endcase
 		
 end
-
+end
 
 
 endmodule
