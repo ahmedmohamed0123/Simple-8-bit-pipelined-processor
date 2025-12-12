@@ -8,7 +8,8 @@ module TB ();
 
 Top T1(
 	.clk(clk),
-	.rst_n(rst_n),
+	.rst_n(rst_n), 
+	.interrupt(interrupt),
 	.In_port(In_port),
 	.Out_port(Out_port)
 	);
@@ -18,8 +19,13 @@ always #10 clk=~clk;
 initial begin
 	clk=0;
 	rst_n=1;
-	
-
+	 repeat(100) begin
+     @(posedge clk ) 
+	if(T1.Opcode==8'hff)  
+		interrupt=1;
+		else 
+		interrupt=0;
+	 end
 
 
 	#400;

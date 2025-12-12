@@ -106,7 +106,8 @@ module Top (
 
 		.Opcode(Opcode),
 		.CCR(CCR),
-		
+		.rst_n(rst_n),
+		.interrupt(interrupt),
 		// pc control signals 
 		.S_Target(S_Target), 	// to choose the target into pc ( 0: M[0], 1: M[1], 2: X[SP], 3: R[rb] )
 		.E_Pc(E_Pc),			// change pc or not             
@@ -135,6 +136,7 @@ module Top (
     	.w_data_S_M_rb(w_data_S_M_rb), 	// Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
 		.Out_E(Out_E)					// Enable for Output port
 	);
+
 
 
 
