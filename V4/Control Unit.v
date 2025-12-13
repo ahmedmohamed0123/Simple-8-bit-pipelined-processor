@@ -494,7 +494,7 @@ always @(*)	begin
 
                     E_Pc	=1'b1;	
 				   if (CCR[0] == 1'b0)begin
-					Alu_Op	= 4'h0; // to pass R[rb]
+					//Alu_Op	= 4'h0; // to pass R[rb]
 				     //  pc<--rb
 					S_Target	=2'b11;		
 					load	=1'b0;

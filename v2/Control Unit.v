@@ -63,7 +63,24 @@ always @(*)	begin
 			W_O=1'b0;
 
 			Out_E	=1'b0;
+          /*----------------------------------------
+      1) RESET overrides everything
+    ----------------------------------------*/
+    if (!rst_n) begin
+        // RESET PC = 0
+        E_Pc     = 1'b1;
+        S_Target = 2'b00;   // PC = 0
+        load     = 1'b0;
 
+        // RESET SP = 255
+        IncSp    = 1'b0;
+        DecSp    = 1'b0;
+        // (actual SP reset is inside register file)
+
+        // RESET FLAGS
+        SaveFlags = 1'b0;
+
+    end
 		case (Opcode[7:4])
 		
 /*------------------------------------- A-Format -------------------------------------*/

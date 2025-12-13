@@ -84,7 +84,7 @@ module Top (
 		.imm(E_Imm),
 		.M1(Mem_R_D),  
 		.X(X),   
-		.Alu_out(ALu_Out),   
+		.rb(Reg_B),   
 		.targer_Sel(S_Target),
 		.Pc(Pc)
 

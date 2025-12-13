@@ -7,7 +7,7 @@ module Pc (
 		input wire			imm,
 		input wire	[7:0]	M1,  		// M[1 or 0] incase interrupt or reset
 		input wire	[7:0]	X,   		// SP
-		input wire	[7:0]	Alu_out,   	// Alu_out
+		input wire	[7:0]	rb,   	// Alu_out
 		input wire 	[1:0]  	targer_Sel,
 
 		output reg	[7:0] 	Pc
@@ -28,7 +28,7 @@ always @(posedge clk or negedge rst_n) begin
               2'b00 :Pc <=M1;
               2'b01 :Pc <=M1;
               2'b10 :Pc <=X;
-			  2'b11 :Pc <=Alu_out;
+			  2'b11 :Pc <=rb;
 			endcase
 		end
 		
