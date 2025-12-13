@@ -11,7 +11,7 @@ module instr_mem (
 
     
     initial begin
-        $readmemh("programm_3.txt", mem);
+        $readmemh("program.txt", mem);
     end
 
     // Synchronous read
