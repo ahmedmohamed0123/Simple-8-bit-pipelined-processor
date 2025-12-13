@@ -21,7 +21,10 @@ module DataMEM (
                 mem[i]=8'h00;
             end
         end */
-
+     always@(*) begin 
+        if(!W_Sp)
+            X=mem[Sp];
+     end
     always @ (*)begin
 
         if (W_Z) begin
@@ -52,9 +55,6 @@ module DataMEM (
         end
         else if (WE) begin
             mem[A] <= WD;           
-        end
-        else begin
-            X <= mem[Sp];           
         end
     end
 end
