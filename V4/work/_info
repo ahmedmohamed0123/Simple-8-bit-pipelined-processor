@@ -17,6 +17,8 @@ R0
 R0
 R0
 R0
+R0
+R0
 !s11f vlog 2021.1 2021.01, Jan 19 2021
 13
 !s112 1.1
@@ -48,19 +50,18 @@ n@_opt1
 R5
 R1
 T_opt2
-!s110 1765635842
-VYX@<o`HQ5@c;:ZdfPL5Ji2
+!s110 1765637300
+V:<HcSE9KPISc5ME69PFmi3
 R6
-=1-8cf8c58d5aa4-693d7702-1ce-45a4
+=1-8cf8c58d5aa4-693d7cb4-171-d58
 R2
 R3
 R4
 n@_opt2
 R5
-R1
 vALU
 Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z8 !s110 1765635989
+Z8 !s110 1765637294
 !i10b 1
 !s100 6WCkjVdl6VLLgiP;VkC?e2
 INZ]B5<bRg_56=CBfNNG3S3
@@ -69,14 +70,14 @@ Z9 dC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4
 Z10 w1765556808
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv
-!i122 263
+!i122 291
 L0 3 111
 Z11 VDg1SIo80bB@j0V0VzS_@n1
 Z12 OL;L;2021.1;73
 r1
 !s85 0
 31
-Z13 !s108 1765635989.000000
+Z13 !s108 1765637294.000000
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv|
 !i113 0
@@ -94,7 +95,7 @@ R9
 R10
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/CCR.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/CCR.sv
-!i122 264
+!i122 292
 Z15 L0 1 39
 R11
 R12
@@ -117,7 +118,7 @@ R9
 Z16 w1765635774
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Control Unit.v
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Control Unit.v
-!i122 265
+!i122 293
 L0 4 738
 R11
 R12
@@ -133,23 +134,23 @@ R4
 n@control_@unit
 vDataMEM
 R7
-Z18 !s110 1765635990
+R8
 !i10b 1
-!s100 G?R^hDYkF?jfoji=EF7aE2
-I@MYnYXBBXoFi<3mdRFJoH0
+!s100 PJC4F?_W>XUO5VggnJ@Cc1
+IL;To4M7L1H=;DYz9Rh1X41
 S1
 R9
-w1765635778
+w1765636657
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv
-!i122 266
+!i122 294
 L0 1 64
 R11
 R12
 r1
 !s85 0
 31
-Z19 !s108 1765635990.000000
+R13
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv|
 !i113 0
@@ -158,7 +159,7 @@ R4
 n@data@m@e@m
 vinstr_mem
 R7
-R18
+R8
 !i10b 1
 !s100 X7CiGPPSJUHkjE7VeDS9G3
 IiTa5zj0GSPabUjhnPh;0g3
@@ -167,21 +168,21 @@ R9
 R10
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv
-!i122 267
+!i122 295
 L0 1 22
 R11
 R12
 r1
 !s85 0
 31
-R19
+R13
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv|
 !i113 0
 R14
 R4
 vPc
-R18
+R8
 !i10b 1
 !s100 >LRMB_Hbe5QYcbQY=K_di3
 I86`F?`mZhHSbJdDM0^?L70
@@ -189,14 +190,14 @@ R9
 R16
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v
-!i122 268
+!i122 296
 L0 1 48
 R11
 R12
 r1
 !s85 0
 31
-R19
+R13
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v|
 !i113 0
@@ -205,7 +206,7 @@ R4
 n@pc
 vRegFile
 R7
-R18
+R8
 !i10b 1
 !s100 4k^EBo<3PN_1fLARBC8[i2
 I^;ho[`B8Xzf?ZonL2nbEn3
@@ -214,14 +215,14 @@ R9
 R10
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv
-!i122 269
+!i122 297
 L0 1 75
 R11
 R12
 r1
 !s85 0
 31
-R19
+R13
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv|
 !i113 0
@@ -229,22 +230,22 @@ R14
 R4
 n@reg@file
 vTB
-R18
+R8
 !i10b 1
-!s100 NHQcMNPP^k@KYVLEUj95Q2
-IfO?dG@C025To]gnT4JP=12
+!s100 F>ZPdVWf2XlDEk__z]n_K2
+IjV>Ul3FmA;cZm4fYJG>2o1
 R9
-w1765563489
+w1765637283
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v
-!i122 270
+!i122 298
 R15
 R11
 R12
 r1
 !s85 0
 31
-R19
+R13
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v|
 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v|
 !i113 0
@@ -253,25 +254,25 @@ R4
 n@t@b
 vTop
 R7
-!s110 1765586116
+R8
 !i10b 1
-!s100 P6`:4^f:eQkCcMmTKl61V0
-IfSmbO3]zSkSmb4[eMDA@@1
+!s100 K]hAKCVV`:Fh7?]Jz<2S:1
+I2Gd>3C5DKgL6mD@TEZlM?1
 S1
-dC:/Micro project/V4
-w1765585862
-8C:/Micro project/V4/top.sv
-FC:/Micro project/V4/top.sv
-!i122 254
-L0 1 231
+R9
+w1765636579
+8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv
+FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv
+!i122 299
+L0 1 230
 R11
 R12
 r1
 !s85 0
 31
-!s108 1765586116.000000
-!s107 C:/Micro project/V4/top.sv|
-!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/V4/top.sv|
+R13
+!s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv|
 !i113 0
 R14
 R4
