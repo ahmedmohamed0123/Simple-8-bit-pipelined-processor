@@ -524,13 +524,13 @@ always @(*)	begin
 					2'h1: begin       //CALL
 
 					   //    pc<--( pc+1)
-							E_Pc	=1'b1;	
-							E_Imm	=1'b0;		
-							load	=1'b1;
+						//	E_Pc	=1'b1;	
+						//	E_Imm	=1'b0;		
+						//	load	=1'b1;
                              
 						 //   sp<--(pc+1)
-						w_E_M	=1'bx;
-						w_Add_S_M	=1'b0;
+						//w_E_M	=1'bx;
+						//w_Add_S_M	=1'b0;
 						w_Data_S_M	=1'b1;
                         w_SP =1'b1;
 							

@@ -7,7 +7,7 @@ module Pc (
 		input wire			imm,
 		input wire	[7:0]	M1,  		// M[1 or 0] incase interrupt or reset
 		input wire	[7:0]	X,   		// SP
-		input wire	[7:0]	rb,   	// Alu_out
+		input wire	[7:0]	rb,   	
 		input wire 	[1:0]  	targer_Sel,
 
 		output reg	[7:0] 	Pc
