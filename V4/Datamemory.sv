@@ -17,10 +17,10 @@ module DataMEM (
     integer i;
 
     initial begin 
-            for (i=0;i<256;i=i+1) begin
+           // for (i=0;i<256;i=i+1) begin
                 mem[i]=8'h00;
             end
-        end
+      
    always @ (*)begin
 
             X <= mem[Sp];    

@@ -30,7 +30,7 @@ initial begin
 
 	#400;
 
-	$finish;
+	$stop;
 end 
 
 
