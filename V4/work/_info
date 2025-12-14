@@ -19,6 +19,7 @@ R0
 R0
 R0
 R0
+R0
 !s11f vlog 2021.1 2021.01, Jan 19 2021
 13
 !s112 1.1
@@ -50,10 +51,10 @@ n@_opt1
 R5
 R1
 T_opt2
-!s110 1765637300
-V:<HcSE9KPISc5ME69PFmi3
+!s110 1765637699
+Vi;i0lDWU1L7SQbamV2M252
 R6
-=1-8cf8c58d5aa4-693d7cb4-171-d58
+=1-8cf8c58d5aa4-693d7e43-1b6-21d4
 R2
 R3
 R4
@@ -134,23 +135,23 @@ R4
 n@control_@unit
 vDataMEM
 R7
-R8
+!s110 1765637696
 !i10b 1
-!s100 PJC4F?_W>XUO5VggnJ@Cc1
-IL;To4M7L1H=;DYz9Rh1X41
+!s100 I8D3Ue0`<mzQOBj]jIOQM3
+IdfL9f[o9cPCTaKE8FU:fg3
 S1
 R9
-w1765636657
+w1765637686
 8C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv
 FC:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv
-!i122 294
+!i122 300
 L0 1 64
 R11
 R12
 r1
 !s85 0
 31
-R13
+!s108 1765637696.000000
 !s107 C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv|
 !i113 0

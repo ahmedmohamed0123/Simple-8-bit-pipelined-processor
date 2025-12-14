@@ -1,9 +1,9 @@
-{C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv}
+{C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module RegFile
+-- Compiling module ALU
 
 Top level modules:
-	RegFile
+	ALU
 
 } {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Control Unit.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Control Unit.v}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
@@ -12,33 +12,12 @@ QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
 Top level modules:
 	Control_Unit
 
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Alu.sv}
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Reg file.sv}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module ALU
+-- Compiling module RegFile
 
 Top level modules:
-	ALU
-
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Datamemory.sv}
-QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module DataMEM
-
-Top level modules:
-	DataMEM
-
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv}
-QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module Top
-
-Top level modules:
-	Top
-
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v}
-QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module TB
-
-Top level modules:
-	TB
+	RegFile
 
 } {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/InstructionMemory.sv}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
@@ -47,12 +26,19 @@ QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
 Top level modules:
 	instr_mem
 
-} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v}
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Tb.v}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
--- Compiling module Pc
+-- Compiling module TB
 
 Top level modules:
-	Pc
+	TB
+
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/top.sv}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Top
+
+Top level modules:
+	Top
 
 } {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/CCR.sv} {1 {vlog -work work -vopt -sv -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/CCR.sv}
 QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
@@ -60,5 +46,12 @@ QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
 
 Top level modules:
 	CCR
+
+} {} {}} {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v} {1 {vlog -work work -vopt -stats=none {C:/githup_repo/8_bit pipelined proccesor/Simple-8-bit-pipelined-processor/V4/Pc.v}
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Pc
+
+Top level modules:
+	Pc
 
 } {} {}}

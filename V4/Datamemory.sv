@@ -22,7 +22,7 @@ module DataMEM (
             end
       
    always @ (*)begin
-
+           if (!W_Sp)
             X <= mem[Sp];    
         end
     always @ (*)begin
