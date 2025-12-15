@@ -53,7 +53,7 @@ module Id_Ex  (
 		output reg				w_E_M_Ex,		// Write enable for Data memory
 		output reg				w_SP_Ex,		// Write enable for Data memory in stack
 		output reg      		W_Z_Ex,         // read m[0]
-    	output reg      		W_O_Ex,         // read m[0]
+    	output reg      		W_O_Ex,         // read m[1]
 		output reg				w_Add_S_M_Ex,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
 		output reg				w_Data_S_M_Ex,	// Write Data selection for Data memory       (0: Mux for Alu_out & R[rb], 1: PC+1)
     	output reg      		w_data_S_M_rb_Ex, // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
