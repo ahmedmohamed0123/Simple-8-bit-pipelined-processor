@@ -287,12 +287,10 @@ always @(*)	begin
 							load	= 1'b1;         // Increment
 
 					// Register file control signals
-							w_E_R	=1'b1;			// write in rf
 							w_Add_S_R	=1'b1;		// write in rb as address
 							w_Data_S_R	= 3'h2;		// write drom stack
 							IncSp 	= 1'b1; 		// Increment sp before using it
                     // Register file control signals
-						w_E_R	    = 1'b0;     // Enable write to Reg file		
 						w_SP=1'b0;	    // Select Rb address from instruction
 					end
 
