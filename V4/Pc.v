@@ -9,7 +9,7 @@ module Pc (
 		input wire	[7:0]	M1,  		   // M[1 or 0] in case interrupt or reset
 		input wire	[7:0]	X,   		   // SP
 		input wire	[7:0]	rb,   	       
-		input wire 	[1:0]  	targer_Sel,    // Select immediate Target (00 -> M1 , 01 -> M1 , 10 -> X , 11 -> rb)
+		input wire 	[1:0]  	targer_Sel,    // Select immediate Target (00 -> M0 , 01 -> M1 , 10 -> X , 11 -> rb)
 
 		output reg	[7:0] 	Pc
 

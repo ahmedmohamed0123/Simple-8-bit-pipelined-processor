@@ -20,11 +20,12 @@ module Id_Ex  (
 		input wire 				w_E_M_Id,		// Write enable for Data memory
 		input wire 				w_SP_Id,		// Write enable for Data memory in stack
 		input wire       		W_Z_Id,         // read m[0]
-    	input wire       		W_O_Id,         // read m[0]
+    	input wire       		W_O_Id,         // read m[1]
 		input wire 				w_Add_S_M_Id,	// Write address selection for Data memory    (0: IMM, 1: ALU out)
 		input wire 				w_Data_S_M_Id,	// Write Data selection for Data memory       (0: Mux for Alu_out & R[rb], 1: PC+1)
     	input wire       		w_data_S_M_rb_Id, // Write  Data selection to select rb incase of (STI) (0: ALU out, 1: R[rb])
-		input wire 				Out_E_Id,		// Enable for input port
+		
+		input wire 				Out_E_Id,		// Enable for output port
 
 		input wire 		[7:0]	Pc_pluse1_Id,
 		input wire 		[7:0]	Imm_Id,
@@ -123,32 +124,30 @@ always @(posedge clk or negedge rst_n) begin
 		In_port_Ex<=0;
 	end
 	else if (!stall) begin
-		w_E_R_Ex <= w_E_R_Id;
-		w_Add_S_R_Ex <= w_Add_S_R_Id;
-		w_Data_S_R_Ex <= w_Data_S_R_Id;
-		Alu_Op_Ex <= Alu_Op_Id;
-		SaveFlags_Ex <= SaveFlags_Id;
-		returnF_Ex <= returnF_Id;
-		w_E_M_Ex <= w_E_M_Id;
-		w_SP_Ex <= w_SP_Id;
-		W_Z_Ex <= W_Z_Id;
-		W_O_Ex <= W_O_Id;
-		w_Add_S_M_Ex <= w_Add_S_M_Id;
-		w_Data_S_M_Ex <= w_Data_S_M_Id;
+		w_E_R_Ex         <= w_E_R_Id;
+		w_Add_S_R_Ex     <= w_Add_S_R_Id;
+		w_Data_S_R_Ex    <= w_Data_S_R_Id;
+		Alu_Op_Ex        <= Alu_Op_Id;
+		SaveFlags_Ex     <= SaveFlags_Id;
+		returnF_Ex       <= returnF_Id;
+		w_E_M_Ex         <= w_E_M_Id;
+		w_SP_Ex          <= w_SP_Id;
+		W_Z_Ex           <= W_Z_Id;
+		W_O_Ex           <= W_O_Id;
+		w_Add_S_M_Ex     <= w_Add_S_M_Id;
+		w_Data_S_M_Ex    <= w_Data_S_M_Id;
 		w_data_S_M_rb_Ex <= w_data_S_M_rb_Id;
-		Out_E_Ex <= Out_E_Id;
-		Pc_pluse1_Ex <= Pc_pluse1_Id;
-		Imm_Ex <= Imm_Id;
-		ra_Ex <= ra_Id;
-		rb_Ex <= rb_Id;
-		R_ra_Ex <= R_ra_Id;
-		R_rb_Ex <= R_rb_Id;
-		Sp_Ex <=Sp_Id; 
-		In_port_Ex<=In_port_Id;
+		Out_E_Ex         <= Out_E_Id;
+		Pc_pluse1_Ex     <= Pc_pluse1_Id;
+		Imm_Ex           <= Imm_Id;
+		ra_Ex            <= ra_Id;
+		rb_Ex            <= rb_Id;
+		R_ra_Ex          <= R_ra_Id;
+		R_rb_Ex          <= R_rb_Id;
+		Sp_Ex            <= Sp_Id; 
+		In_port_Ex       <= In_port_Id;
 	end
 	// else if stall will save data
 
 end
-
-
 endmodule
