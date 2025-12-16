@@ -13,12 +13,27 @@ Top T1(
 	);
 
 always #10 clk=~clk;
+ 
+ always @(*) begin 
+	if(T1.Opcode==8'hff)  
+		interrupt=1;
+		else 
+		interrupt=0;
+end 
 
 initial begin
 	clk=0;
 	rst_n=1;
-	interrupt=0;
+	 repeat(100) begin
+     @(posedge clk) 
+	if(T1.Opcode==8'hff)  
+		interrupt=1;
+		else 
+		interrupt=0;
+	 end
+
 	#400;
 	$stop;
 end 
+
 endmodule
