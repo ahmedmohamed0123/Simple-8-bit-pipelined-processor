@@ -86,10 +86,15 @@ always @(*)	begin
 					E_Pc	 = 1'b1;          // Enable PC update		
 					S_Target = 2'b01;         // to select M[1]
 					load	 = 1'b0;          // pass target selection 
-				
+					// Register file control signals 
+					DecSp 	= 1'b1; // to decrement sp 
+
 				// Data memory control signals
 					W_O = 1'b1;                 // to read M[1]
-					
+					w_SP=1'b1;                 // to write pc in stack 
+					w_Data_S_M=1'b1; // to  store pc+1 incase of interrupt 
+
+
 				// Alu control signals
 					SaveFlags = 1'b1;          // Save flags in CCR[7:4]
 			end

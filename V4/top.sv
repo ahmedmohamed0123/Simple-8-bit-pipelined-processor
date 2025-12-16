@@ -78,7 +78,6 @@ module Top (
     Pc pc(
 
 		.clk(clk),
-		.rst_n(rst_n),
 		.en(E_Pc),
 		.load(load),
 		.imm(E_Imm),
@@ -93,8 +92,6 @@ module Top (
 
 
 	instr_mem I_m(
-
-	    .clk(clk),       	// clock
 	    .PC(Pc),      		// PC input
 	    .instr(Opcode),     // instruction  output
 	    .next_byte(IMM)  	//immediate value or ea
@@ -221,10 +218,9 @@ module Top (
 	    .X(X)         	// Stack data
 
 		);
-
 always @(posedge clk) begin
 	if (Out_E) Out_port <= ALu_Out;
-	DM.mem[DM.Sp] = (Cu.Opcode[7:4]==8'h7 && Cu.Opcode[3:2]==2'b01 ) ? 0 : DM.mem[DM.Sp];
+	DM.mem[DM.Sp] = (Cu.Opcode[7:4]==4'h7 && Cu.Opcode[3:2]==2'b01 ) ? 0 : DM.mem[DM.Sp];
 end
 
 endmodule 
