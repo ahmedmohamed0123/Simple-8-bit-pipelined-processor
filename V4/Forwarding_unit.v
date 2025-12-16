@@ -17,7 +17,7 @@ always @(*) begin
 
    if (W_E_R_previous && (R_ADD_A_current != 2'b11) && (W_add_previous == R_ADD_A_current)) begin
       if (w_Data_S_R_previous == 0)
-      // Memory hazard (Dependency RAW) (Load then arithmetic or logical LOAD r1 -> ADD r2,r1)
+      // Memory hazard (Dependency RAW) (L_type then arithmetic or logical LDI/LDD r1,r2(0) -> ADD r3,r1) (Will still have one stall cycle)
          forward_A = 2'b10;
       else if (w_Data_S_R_previous == 1)
       // Execution hazard (Dependency RAW) (Arithmetic or logical then arithmetic or logical ADD r1.r2 -> ADD r3,r1)
