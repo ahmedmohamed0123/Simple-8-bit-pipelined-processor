@@ -1,20 +1,19 @@
-
-
 module ALU 
 (   
 
     input wire       [7:0]      A, 
     input wire       [7:0]      B,
     input wire       [3:0]      ALU_opcode,
-    input wire       [3:0]      CCR,
+    input wire       [3:0]      CCR,                //Old flags: Z,N,C,V (from CCR)
 
     output reg       [7:0]      out,                //Combinational output
-    output reg                  Z,N,C,V             //Combinational output flags
+    output reg                  Z,N,C,V             //Combinational output new flags
 );
 
 
 //Combinational logic for ALU operations
 always @(*) begin
+    //Initialize flags with old values
     Z = CCR[0];
     N = CCR[1];
     C = CCR[2];

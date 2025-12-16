@@ -1,10 +1,10 @@
 module CCR(
 
 	input wire                  clk,     
-    input wire                  rst,                // Clock and Reset for sequential logic in CCR 
-    input wire                  saveF,              // save flages in [7:4] if interupt came
-    input wire                  returnF,           // returen flags 
-    input wire                  Z,N,C,V,             //Combinational output flags
+    input wire                  rst,                 // Clock and Reset for sequential logic in CCR 
+    input wire                  saveF,               // Save flages in [7:4] if interupt came
+    input wire                  returnF,             // Return flags 
+    input wire                  Z,N,C,V,             // Combinational output flags (from ALU)
 
     output wire		[3:0]		CCR_wire
 

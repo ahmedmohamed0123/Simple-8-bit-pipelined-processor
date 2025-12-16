@@ -1,9 +1,7 @@
 module instr_mem (
-    input  wire        clk,       // clock
-    input  wire [7:0]  PC,      // PC input
+    input  wire  [7:0]  PC,        // PC input (Memory Address)
     output wire  [7:0]  instr,     // instruction  output
-    output wire  [7:0]  next_byte  //immediate value or ea
-         
+    output wire  [7:0]  next_byte  // immediate value or ea
 );
 
     // 256x8 ROM
@@ -17,6 +15,5 @@ module instr_mem (
     // Synchronous read
         assign instr = mem[PC];
         assign next_byte = mem[PC + 8'd1];
-
 
 endmodule

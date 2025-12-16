@@ -10,9 +10,7 @@ module If_Id  (
 
 		output reg 	[7:0]	Pc_pluse1_Id,
 		output reg 	[7:0]	instr_Id,
-		output reg 	[7:0]	Imm_Id,
-
-
+		output reg 	[7:0]	Imm_Id
 );
 
 always @(posedge clk or negedge rst_n) begin 
@@ -35,6 +33,4 @@ always @(posedge clk or negedge rst_n) begin
 	// else if stall will save data
 
 end
-
-
 endmodule

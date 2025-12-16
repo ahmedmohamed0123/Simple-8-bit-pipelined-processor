@@ -19,13 +19,14 @@ module DataMEM (
     initial begin 
            // for (i=0;i<256;i=i+1) begin
                 mem[i]=8'h00;
-            end
+    end
       
-   always @ (*)begin
+   always @ (*) begin
            if (!W_Sp)
             X <= mem[Sp];    
-        end
-    always @ (*)begin
+    end
+
+    always @ (*) begin
 
         if (W_Z) begin
             RD = mem[0];
@@ -40,25 +41,23 @@ module DataMEM (
         end
             
     end 
-
     
-        // Synchronous memory operations
-   always @(posedge Clk or negedge rst_n) begin
-    if(!rst_n) begin 
-        for (i=0;i<256;i=i+1) begin
+    // Synchronous memory operations
+    always @(posedge Clk or negedge rst_n) begin
+        if(!rst_n) begin 
+            for (i=0;i<256;i=i+1) begin
             mem[i] <= 8'h00;
+            end
+            X <= 8'h00;
+        end 
+        else begin 
+            if (W_Sp) begin 
+                mem[Sp] <= WD;           
+            end
+            else if (WE) begin
+                mem[A] <= WD;           
+            end
         end
-        X <= 8'h00;
-    end 
-    else begin 
-        if (W_Sp) begin 
-            mem[Sp] <= WD;           
-        end
-        else if (WE) begin
-            mem[A] <= WD;           
-        end
-    
     end
-end
     
 endmodule
