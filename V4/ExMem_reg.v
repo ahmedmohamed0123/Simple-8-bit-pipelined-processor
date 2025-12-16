@@ -49,68 +49,67 @@ module regExecuteMemory(
 );
 
 always @(posedge clk or negedge rst) begin
-if(!rst) begin
-    Imm_MEM <=0;
-    Pc_plus1_MEM <=0;
-    ALU_out_MEM <=0;
-    SP_MEM <=0;
-    reg_rb_MEM <=0;
-    w_E_M_MEM <=0;
-    w_Add_S_M_MEM <=0;
-    w_Data_S_M_MEM <=0;
-    w_data_S_M_rb_MEM <=0;
-    w_SP_MEM <=0;
-    W_Z_MEM <=0;
-    W_O_MEM <=0;
-    Out_E_MEM <=0;
-    w_E_R_MEM <=0;
-    w_Add_S_R_MEM <=0;
-    w_Data_S_R_MEM <=0;
-    ra_MEM <=0;
-    rb_MEM <=0;
-
+    if(!rst) begin
+        Imm_MEM <=0;
+        Pc_plus1_MEM <=0;
+        ALU_out_MEM <=0;
+        SP_MEM <=0;
+        reg_rb_MEM <=0;
+        w_E_M_MEM <=0;
+        w_Add_S_M_MEM <=0;
+        w_Data_S_M_MEM <=0;
+        w_data_S_M_rb_MEM <=0;
+        w_SP_MEM <=0;
+        W_Z_MEM <=0;
+        W_O_MEM <=0;
+        Out_E_MEM <=0;
+        w_E_R_MEM <=0;
+        w_Add_S_R_MEM <=0;
+        w_Data_S_R_MEM <=0;
+        ra_MEM <=0;
+        rb_MEM <=0;
     end
 
- else if (flush) begin
-    Imm_MEM <=0;
-    Pc_plus1_MEM <=0;
-    ALU_out_MEM <=0;
-    SP_MEM <=0;
-    reg_rb_MEM <=0;
-    w_E_M_MEM <=0;
-    w_Add_S_M_MEM <=0;
-    w_Data_S_M_MEM <=0;
-    w_data_S_M_rb_MEM <=0;
-    w_SP_MEM <=0;
-    W_Z_MEM <=0;
-    W_O_MEM <=0;
-    Out_E_MEM <=0;
-    w_E_R_MEM <=0;
-    w_Add_S_R_MEM <=0;
-    w_Data_S_R_MEM <=0;
-    ra_MEM <=0;
-    rb_MEM <=0;
+    else if (flush) begin
+        Imm_MEM <=0;
+        Pc_plus1_MEM <=0;
+        ALU_out_MEM <=0;
+        SP_MEM <=0;
+        reg_rb_MEM <=0;
+        w_E_M_MEM <=0;
+        w_Add_S_M_MEM <=0;
+        w_Data_S_M_MEM <=0;
+        w_data_S_M_rb_MEM <=0;
+        w_SP_MEM <=0;
+        W_Z_MEM <=0;
+        W_O_MEM <=0;
+        Out_E_MEM <=0;
+        w_E_R_MEM <=0;
+        w_Add_S_R_MEM <=0;
+        w_Data_S_R_MEM <=0;
+        ra_MEM <=0;
+        rb_MEM <=0;
     end
 
-else if (!stall) begin
-    Imm_MEM <=Imm_EX;
-    Pc_plus1_MEM <=Pc_plus1_EX;
-    ALU_out_MEM <=ALU_out_EX;
-    SP_MEM <=SP_EX;
-    reg_rb_MEM <= reg_rb_EX;
-    w_E_M_MEM <=w_E_M_EX;
-    w_Add_S_M_MEM <= w_Add_S_M_EX;
-    w_Data_S_M_MEM <=w_Data_S_M_EX;
-    w_data_S_M_rb_MEM <=w_data_S_M_rb_EX;
-    w_SP_MEM <=w_SP_EX;
-    W_Z_MEM <=W_Z_EX;
-    W_O_MEM <=W_O_EX;
-    Out_E_MEM <=Out_E_EX;
-    w_E_R_MEM <=w_E_R_EX;
-    w_Add_S_R_MEM <=w_Add_S_R_EX;
-    w_Data_S_R_MEM <=w_Data_S_R_EX;
-    ra_MEM <=ra_EX;
-    rb_MEM <=rb_EX;
+    else if (!stall) begin
+        Imm_MEM           <= Imm_EX;
+        Pc_plus1_MEM      <= Pc_plus1_EX;
+        ALU_out_MEM       <= ALU_out_EX;
+        SP_MEM            <= SP_EX;
+        reg_rb_MEM        <= reg_rb_EX;
+        w_E_M_MEM         <= w_E_M_EX;
+        w_Add_S_M_MEM     <= w_Add_S_M_EX;
+        w_Data_S_M_MEM    <= w_Data_S_M_EX;
+        w_data_S_M_rb_MEM <= w_data_S_M_rb_EX;
+        w_SP_MEM          <= w_SP_EX;
+        W_Z_MEM           <= W_Z_EX;
+        W_O_MEM           <= W_O_EX;
+        Out_E_MEM         <= Out_E_EX;
+        w_E_R_MEM         <= w_E_R_EX;
+        w_Add_S_R_MEM     <= w_Add_S_R_EX;
+        w_Data_S_R_MEM    <= w_Data_S_R_EX;
+        ra_MEM            <= ra_EX;
+        rb_MEM            <= rb_EX;
     end
    
 end

@@ -11,8 +11,8 @@ module MEM_WB_Register (
     input  wire [7:0]  imm_MEM,
     input  wire [7:0]  input_port_MEM,
 
-    input reg  [7:0]	R_ra_MEM,
-    input reg  [7:0]	R_rb_MEM,
+    input  wire  [7:0]	R_ra_MEM,
+    input  wire  [7:0]	R_rb_MEM,
     
     // Control signals from MEM stage
     input  wire        w_E_R_MEM,
@@ -78,8 +78,8 @@ module MEM_WB_Register (
             input_port_WB  <= input_port_MEM;
             imm_WB         <= imm_MEM;
 
-            R_ra_WB        <= R_ra_WB ;
-            R_rb_WB        <= R_rb_WB ;
+            R_ra_WB        <= R_ra_MEM ;
+            R_rb_WB        <= R_rb_MEM ;
                     
             w_E_R_WB       <= w_E_R_MEM;
             w_Add_S_R_WB   <= w_Add_S_R_MEM;

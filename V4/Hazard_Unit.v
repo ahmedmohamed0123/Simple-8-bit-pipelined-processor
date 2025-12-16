@@ -1,7 +1,7 @@
 module Hazard_Unit (
     input  wire [3:0] OPCODE,        // instruction opcode in EX stage
 	input  wire [1:0] ra_addr,
-	:input wire [7:0] ra_data,
+	input wire [7:0] ra_data,
     input  wire [3:0] CCR,    
     output reg        FLUSH
 );
