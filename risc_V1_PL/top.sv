@@ -361,9 +361,7 @@ module Top (
 	    .CCR_wire(CCR_old)
 
 	);
-	// Mux at input port for alu to forward data
-	assign R_ra_EX=(forward_a==2'b00)? R_ra_Ex : (forward_a==2'b10)? ALU_out_MEM :(forward_a==2'b01)?out_MEM:R_ra_Ex;
-	assign R_rb_EX=(forward_b==2'b00)? R_rb_EX : (forward_b==2'b10)? ALU_out_MEM :(forward_b==2'b01)?out_MEM:R_rb_EX;
+	
 
 	ALU Alu(
 
@@ -423,6 +421,9 @@ module Top (
  		  .ra_MEM(ra_MEM),
 		  .rb_MEM(rb_MEM)
 	);
+	// Mux at input port for alu to forward data
+	assign R_ra_EX=(forward_a==2'b00)? R_ra_Ex : (forward_a==2'b10)? ALU_out_MEM :(forward_a==2'b01)?out_MEM:R_ra_Ex;
+	assign R_rb_EX=(forward_b==2'b00)? R_rb_EX : (forward_b==2'b10)? ALU_out_MEM :(forward_b==2'b01)?out_MEM:R_rb_EX;
 
     assign Mux1 = w_data_S_M_rb_MEM ? R_rb_MEM :ALU_out_MEM;
 
