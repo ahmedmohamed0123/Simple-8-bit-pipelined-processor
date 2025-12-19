@@ -52,13 +52,17 @@ module Top (
 //*************** RegisterFile wires ***************//
 
 	    wire   	[1:0]   W_Add;
-        wire   	[1:0]   R_Add_A;
-       	wire   	[1:0]  	R_Add_B;
+        wire   	[1:0]   R_Add_A_Id;
+       	wire   	[1:0]  	R_Add_B_Id;
        	reg   	[7:0]  	WrData;
 
        	wire   	[7:0]  	Reg_A;
       	wire   	[7:0]  	Reg_B;
     	wire   	[7:0]  	Sp;
+//*************** Pipeline Control ***************//
+		wire flush;
+		wire stall;
+
 //*************** Forward unit  wires ***************//	
 		wire [1:0] forward_a;
 		wire [1:0] forward_b;
@@ -135,6 +139,7 @@ module Top (
 		    wire 		[7:0]	Imm_MEM  ;
 		    wire 		[1:0]	ra_MEM  ;
 		    wire 		[1:0]	rb_MEM  ;
+			wire        [7:0]   R_ra_MEM; 
 		    wire 		[7:0]	R_rb_MEM  ;
 		    wire 		[7:0]	Sp_MEM  ;
 			wire 		[7:0]	input_port_MEM;
@@ -157,6 +162,7 @@ module Top (
 		    wire 		[7:0]	Imm_WB  ;
 		    wire 		[1:0]	ra_WB  ;
 		    wire 		[1:0]	rb_WB  ;
+			wire        [7:0]   R_ra_WB;   
 		    wire 		[7:0]	R_rb_WB ;
 		    wire 		[7:0]	Sp_WB  ;
 			wire 		[7:0]	input_port_WB;  
@@ -170,9 +176,9 @@ module Top (
 		.en(E_Pc),
 		.load(load),
 		.imm(E_Imm),
-		.M1(mem_data_MEM),
-		.X(sp_MEM),
-		.rb(rb_MEM),   
+		.M1(out_MEM),
+		.X(Sp_MEM),
+		.rb(R_rb_MEM),   
 		.targer_Sel(S_Target),
 		.Pc(Pc)
 
@@ -196,7 +202,7 @@ module Top (
 	  .stall(stall),
 	  .Pc_pluse1_If(Pc+1),	 
 	  .instr_If(Opcode), 
-	  .Imm_If(Imm),
+	  .Imm_If(IMM),
       .input_port_If(input_port),
 	  .Pc_pluse1_Id(Pc_pluse1_Id),
       .instr_Id(instr_Id),
@@ -254,14 +260,14 @@ module Top (
 	assign R_Add_A_Id =instr_Id[3:2];
 	assign R_Add_B_Id =instr_Id[1:0];
 
-	assign W_Add = (w_Add_S_R) ? Opcode[1:0] : Opcode[3:2] ; 
+	assign W_Add = (w_Add_S_R_WB) ? rb_WB : ra_WB ; 
 	
 
 	RegFile RF(
 
 	   	.clk(clk),
 	   	.rst_n(rst_n),
-	   	.WrEn(w_E_R),
+	   	.WrEn(w_E_R_WB),
 	   	.IncEn(IncSp),
 	   	.DecEn(DecSp),
 	   	.W_Add(W_Add),
@@ -298,10 +304,10 @@ module Top (
       .w_Data_S_M_Id(w_Data_S_M),	
       .w_data_S_M_rb_Id(w_data_S_M_rb),
       .Out_E_Id(Out_E),		
-      .Pc_pluse1_Id(Pc_pluse1_If),
-      .Imm_Id(Imm_If),
-      .ra_Id(R_Add_A),
-      .rb_Id(R_Add_B),
+      .Pc_pluse1_Id(Pc_pluse1_Id),
+      .Imm_Id(Imm_Id),
+      .ra_Id(R_Add_A_Id),
+      .rb_Id(R_Add_B_Id),
       .R_ra_Id(Reg_A),
       .R_rb_Id(Reg_B),
       .Sp_Id(Sp),
@@ -318,18 +324,18 @@ module Top (
       .returnF_Ex(returnF_EX),   
 
       // Data memory control signals
-      .w_E_M_Ex(w_E_M_Id),		
-      .w_SP_Ex(w_SP_Id),		
-      .W_Z_Ex(W_Z_Id),         
-      .W_O_Ex(W_O_Id),         
-      .w_Add_S_M_Ex(w_Add_S_M_Id),	
-      .w_Data_S_M_Ex(w_Data_S_M_Id),	
-      .w_data_S_M_rb_Ex(w_data_S_M_rb_Id),
-      .Out_E_Ex(Out_E_Id),	
-      .Pc_pluse1_Ex(Pc_pluse1_Id),
-      .Imm_Ex(Imm_Id),
-      .ra_Ex(ra_Id),
-      .rb_Ex(rb_Id),
+      .w_E_M_Ex(w_E_M_EX),		
+      .w_SP_Ex(w_SP_EX),		
+      .W_Z_Ex(W_Z_EX),         
+      .W_O_Ex(W_O_EX),         
+      .w_Add_S_M_Ex(w_Add_S_M_EX),	
+      .w_Data_S_M_Ex(w_Data_S_M_EX),	
+      .w_data_S_M_rb_Ex(w_data_S_M_rb_EX),
+      .Out_E_Ex(Out_E_EX),	
+      .Pc_pluse1_Ex(Pc_pluse1_EX),
+      .Imm_Ex(Imm_EX),
+      .ra_Ex(ra_EX),
+      .rb_Ex(rb_EX),
       .R_ra_Ex(R_ra_EX),
       .R_rb_Ex(R_rb_EX),
       .Sp_Ex(Sp_EX),
@@ -384,15 +390,15 @@ module Top (
           .stall(stall),
           .Imm_EX(Imm_EX),
           .Pc_plus1_EX(Pc_pluse1_EX),
-          .ALU_out_EX(Alu_out),
+          .ALU_out_EX(Alu_Out),
           .Sp_EX(Sp_EX),
-          .reg_rb_EX(reg_rb_EX),
+          .reg_rb_EX(R_rb_EX),
           .input_port_EX(input_port_EX),
           .w_E_M_EX(w_E_M_EX),
           .w_Add_S_M_EX(w_Add_S_M_EX),
           .w_Data_S_M_EX(w_Data_S_M_EX),
           .w_data_S_M_rb_EX(w_data_S_M_rb_EX),
-          .w_SP_EX(w_SP_EX),
+          .w_Sp_EX(w_SP_EX),
           .W_Z_EX(W_Z_EX),
           .W_O_EX(W_O_EX),
           .Out_E_EX(Out_E_EX),
@@ -404,19 +410,19 @@ module Top (
           .Imm_MEM(Imm_MEM),
           .Pc_plus1_MEM(Pc_plus1_MEM),
           .ALU_out_MEM(ALU_out_MEM),
-          .SP_MEM(SP_MEM),
+          .Sp_MEM(SP_MEM),
           .reg_rb_MEM(R_rb_MEM),
           .input_port_MEM(input_port_MEM),
           .w_E_M_MEM(w_E_M_MEM),
           .w_Add_S_M_MEM(w_Add_S_M_MEM),
           .w_Data_S_M_MEM(w_Data_S_M_MEM),
           .w_data_S_M_rb_MEM(w_data_S_M_rb_MEM),
-          .w_SP_MEM(w_SP_MEM),
+          .w_Sp_MEM(w_SP_MEM),
           .W_Z_MEM(W_Z_MEM),
           .W_O_MEM(W_O_MEM),
           .Out_E_MEM(Out_E_MEM),
           .w_E_R_MEM(w_E_R_MEM),
-          .w_Add_S_R_MEM(w_Add_S_M_MEM),
+          .w_Add_S_R_MEM(w_Add_S_R_MEM),
           .w_Data_S_R_MEM(w_Data_S_R_MEM),
  		  .ra_MEM(ra_MEM),
 		  .rb_MEM(rb_MEM)
@@ -457,7 +463,8 @@ module Top (
           .mem_data_MEM(out_MEM),
           .Sp_MEM(Sp_MEM),
           .imm_MEM(Imm_MEM),
-          .input_port_MEM(input_port_MEM),        	  
+          .input_port_MEM(input_port_MEM),   
+		  .R_ra_MEM(R_ra_MEM),     	  
 		  .R_rb_MEM(R_rb_MEM),
           .w_E_R_MEM(w_E_R_MEM),
           .w_Add_S_R_MEM(w_Add_S_R_MEM),
@@ -471,8 +478,9 @@ module Top (
           .mem_data_WB(out_WB),
           .Sp_WB(Sp_WB),
           .imm_WB(Imm_WB), 
-          .input_port_WB(input_port_WB),           
-		  .R_rb_WB(R_rb_MEM),
+          .input_port_WB(input_port_WB), 
+		  .R_ra_WB(R_ra_WB),          
+		  .R_rb_WB(R_rb_WB),
           .w_E_R_WB(w_E_R_WB),
           .w_Add_S_R_WB(w_Add_S_R_WB),
           .w_Data_S_R_WB(w_Data_S_R_WB),

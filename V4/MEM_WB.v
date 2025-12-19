@@ -10,7 +10,7 @@ module MEM_WB_Register (
     input  wire [7:0]  sp_MEM,
     input  wire [7:0]  imm_MEM,
     input  wire [7:0]  input_port_MEM,
-
+    
     input  wire  [7:0]	R_ra_MEM,
     input  wire  [7:0]	R_rb_MEM,
     

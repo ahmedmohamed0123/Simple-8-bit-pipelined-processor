@@ -1,0 +1,99 @@
+C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Forwarding_unit.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Forwarding_unit.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module forward_unit
+
+Top level modules:
+	forward_unit
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Pc.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Pc.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Pc
+
+Top level modules:
+	Pc
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Id_Ex.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Id_Ex.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Id_Ex
+
+Top level modules:
+	Id_Ex
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Datamemory.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Datamemory.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module DataMEM
+
+Top level modules:
+	DataMEM
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/If_Id.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/If_Id.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module If_Id
+
+Top level modules:
+	If_Id
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Reg_file.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Reg_file.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module RegFile
+
+Top level modules:
+	RegFile
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Control_Unit.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Control_Unit.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Control_Unit
+
+Top level modules:
+	Control_Unit
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Hazard_Unit.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Hazard_Unit.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Hazard_Unit
+
+Top level modules:
+	Hazard_Unit
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/CCR.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/CCR.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module CCR
+
+Top level modules:
+	CCR
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Alu.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/Alu.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/top.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/top.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module Top
+
+Top level modules:
+	Top
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/InstructionMemory.sv {1 {vlog -work work -vopt -sv -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/InstructionMemory.sv
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module instr_mem
+
+Top level modules:
+	instr_mem
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/MEM_WB.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/MEM_WB.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module MEM_WB_Register
+
+Top level modules:
+	MEM_WB_Register
+
+} {} {}} C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/ExMem_reg.v {1 {vlog -work work -vopt -stats=none C:/Users/Administrator/Simple-8-bit-pipelined-processor/Simple-8-bit-pipelined-processor/risc_V1_PL/ExMem_reg.v
+QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+-- Compiling module regExecuteMemory
+
+Top level modules:
+	regExecuteMemory
+
+} {} {}}

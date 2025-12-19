@@ -8,7 +8,7 @@ Top T1(
 	.clk(clk),
 	.rst_n(rst_n), 
 	.interrupt(interrupt),
-	.In_port(In_port),
+	.input_port(In_port),
 	.Out_port(Out_port)
 	);
 
