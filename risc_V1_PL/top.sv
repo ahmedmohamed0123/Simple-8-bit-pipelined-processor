@@ -170,8 +170,8 @@ module Top (
 		.en(E_Pc),
 		.load(load),
 		.imm(E_Imm),
-		.M1(mem_data_MEM)
-		.X(sp_MEM)
+		.M1(mem_data_MEM),
+		.X(sp_MEM),
 		.rb(rb_MEM),   
 		.targer_Sel(S_Target),
 		.Pc(Pc)
@@ -243,7 +243,7 @@ module Top (
 	always @(*) begin 
 		case (w_Data_S_R_WB)
 			3'b000:WrData =out_WB;
-			3'b001:WrData =ALu_out_WB;
+			3'b001:WrData =Alu_out_WB;
 			3'b010:WrData =Sp_WB;
 			3'b011:WrData =input_port_WB;
 			3'b100:WrData =Imm_WB;
@@ -346,7 +346,7 @@ module Top (
 		.w_Data_S_R_previous(w_Data_S_R_Ex),
 		.forward_A(forward_a),
 		.forward_B(forward_b)
-	 )
+	 );
 
 
 	CCR CCr1(
@@ -475,9 +475,8 @@ module Top (
           .w_E_R_WB(w_E_R_WB),
           .w_Add_S_R_WB(w_Add_S_R_WB),
           .w_Data_S_R_WB(w_Data_S_R_WB),
-          .Out_E_WB(Out_E_WB),         // Output port enable 
-
-   );
+          .Out_E_WB(Out_E_WB)        // Output port enable 
+        );
 
    always @(posedge clk) begin
 	if (Out_E_WB) Out_port <= ALu_out_WB;
