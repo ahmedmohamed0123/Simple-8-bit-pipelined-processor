@@ -15,7 +15,7 @@ always @(*) begin
    forward_A = 2'b00;
    forward_B = 2'b00;
 
-   if (W_E_R_previous && (R_ADD_A_current != 2'b11) && ((W_add_B_previous == R_ADD_A_current) || (W_add_A_previous == R_ADD_A_current)) begin
+   if (W_E_R_previous && (R_ADD_A_current != 2'b11) && ((W_add_B_previous == R_ADD_A_current) || (W_add_A_previous == R_ADD_A_current)) ) begin
       if (w_Data_S_R_previous == 0)
       // Memory hazard (Dependency RAW) (L_type then arithmetic or logical LDI/LDD r1,r2(0) -> ADD r3,r1) (Will still have one stall cycle)
          forward_A = 2'b10;
@@ -24,7 +24,7 @@ always @(*) begin
          forward_A = 2'b01;
    end
          
-   if (W_E_R_previous && (R_ADD_B_current != 2'b11) && ((W_add_B_previous == R_ADD_B_current) || (W_add_A_previous == R_ADD_B_current) ) begin
+   if (W_E_R_previous && (R_ADD_B_current != 2'b11) && ((W_add_B_previous == R_ADD_B_current) || (W_add_A_previous == R_ADD_B_current) ) ) begin
       if (w_Data_S_R_previous == 0)
          forward_B = 2'b10;
       else if (w_Data_S_R_previous == 1)
