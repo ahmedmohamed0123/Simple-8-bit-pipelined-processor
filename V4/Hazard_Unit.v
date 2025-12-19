@@ -38,6 +38,7 @@ always @(*) begin
 
     else if (OPCODE_EX == 4'd11) // JMP, CALL, RET, RTI
         FLUSH = 1'b1;
+        
 
     // ==============================
     // DATA HAZARD → STALL (Load-use) (RAW Memory Hazard)
