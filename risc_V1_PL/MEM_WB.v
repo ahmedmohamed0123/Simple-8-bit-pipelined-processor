@@ -11,7 +11,7 @@ module MEM_WB_Register (
     input  wire [7:0]  imm_MEM,
     input  wire [7:0]  input_port_MEM,
 
-    //input  wire  [7:0]	R_ra_MEM,
+    input  wire  [7:0]	R_ra_MEM,
     input  wire  [7:0]	R_rb_MEM,
     
     // Control signals from MEM stage
@@ -23,6 +23,7 @@ module MEM_WB_Register (
     input wire 		[1:0]	rb_MEM,
     input wire 		[1:0]	ra_MEM,
     
+    
     // Outputs to WB stage
     output reg  [7:0]  alu_out_WB,
     output reg  [7:0]  mem_data_WB,
@@ -30,7 +31,7 @@ module MEM_WB_Register (
     output reg  [7:0]  imm_WB,
     output reg  [7:0]  input_port_WB,
 
-    //output reg 	[7:0]	R_ra_WB,
+    output reg 	[7:0]	R_ra_WB,
     output reg 	[7:0]	R_rb_WB,
 
     // Control signals to WB stage
@@ -48,7 +49,7 @@ module MEM_WB_Register (
 
             alu_out_WB     <= 8'h00;
             mem_data_WB    <= 8'h00;
-            sp_WB          <= 8'h00;
+            Sp_WB         <= 8'h00;
             imm_WB         <= 8'h00;
             input_port_WB  <= 8'h00;
             R_ra_WB        <= 8'h00;
@@ -66,7 +67,7 @@ module MEM_WB_Register (
         
             alu_out_WB     <= 8'h00;
             mem_data_WB    <= 8'h00;
-            sp_WB          <= 8'h00;
+            Sp_WB          <= 8'h00;
             imm_WB         <= 8'h00;
             input_port_WB  <= 8'h00;
             R_ra_WB        <= 8'h00;
@@ -84,7 +85,7 @@ module MEM_WB_Register (
             
             alu_out_WB     <= alu_out_MEM;
             mem_data_WB    <= mem_data_MEM;
-            sp_WB          <= sp_MEM;
+            Sp_WB         <= Sp_MEM;
             input_port_WB  <= input_port_MEM;
             imm_WB         <= imm_MEM;
 

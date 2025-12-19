@@ -9,7 +9,7 @@ module instr_mem (
 
     
     initial begin
-        $readmemh("program.txt", mem);
+        $readmemh("tst_forward_1.txt", mem);
     end
 
     // Synchronous read

@@ -96,7 +96,7 @@ always @(posedge clk or negedge rst_n) begin
 		R_ra_Ex <= 0;
 		R_rb_Ex <= 0; 
 		Sp_Ex <=0;
-		input_port_EX<=0;
+		input_port_Ex<=0;
 	end
 	else if (flush) begin
 		w_E_R_Ex <= 0;
@@ -120,7 +120,7 @@ always @(posedge clk or negedge rst_n) begin
 		R_ra_Ex <= 0;
 		R_rb_Ex <= 0; 
 		Sp_Ex <=0;
-		input_port_EX<=0;
+		input_port_Ex<=0;
 	end
 	else if (!stall) begin
 		w_E_R_Ex         <= w_E_R_Id;
@@ -144,7 +144,7 @@ always @(posedge clk or negedge rst_n) begin
 		R_ra_Ex          <= R_ra_Id;
 		R_rb_Ex          <= R_rb_Id;
 		Sp_Ex            <= Sp_Id; 
-		input_port_EX <= input_port_Id;
+		input_port_Ex <= input_port_Id;
 	end
 	// else if stall will save data
 

@@ -59,6 +59,9 @@ module Top (
        	wire   	[7:0]  	Reg_A;
       	wire   	[7:0]  	Reg_B;
     	wire   	[7:0]  	Sp;
+//*************** Forward unit  wires ***************//	
+		wire [1:0] forward_a;
+		wire [1:0] forward_b;
 
 //*************** Alu wires ***************//
 
@@ -332,6 +335,18 @@ module Top (
       .Sp_Ex(Sp_EX),
       .input_port_Ex(input_port_EX)
     );
+	//Forward unit 
+	 forward_unit  Fu 
+	 (
+		.W_E_R_previous(w_E_R_Ex),
+		.R_ADD_A_current(R_Add_A_Id),
+		.R_ADD_B_current(R_Add_B_Id),
+		.W_add_B_previous(rb_Id),
+		.W_add_A_previous(ra_Id),
+		.w_Data_S_R_previous(w_Data_S_R_Ex),
+		.forward_A(forward_a),
+		.forward_B(forward_b)
+	 )
 
 
 	CCR CCr1(
@@ -346,6 +361,9 @@ module Top (
 	    .CCR_wire(CCR_old)
 
 	);
+	// Mux at input port for alu to forward data
+	assign R_ra_EX=(forward_a==2'b00)? R_ra_Ex : (forward_a==2'b10)? ALU_out_MEM :(forward_a==2'b01)?out_MEM:R_ra_Ex;
+	assign R_rb_EX=(forward_b==2'b00)? R_rb_EX : (forward_b==2'b10)? ALU_out_MEM :(forward_b==2'b01)?out_MEM:R_rb_EX;
 
 	ALU Alu(
 
