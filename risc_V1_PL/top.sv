@@ -480,7 +480,7 @@ module Top (
         );
 
    always @(posedge clk) begin
-	if (Out_E_WB) Out_port <= alu_out_WB;
+	if (Out_E_WB) Out_port <= Alu_out_WB;
 	DM.mem[DM.Sp] = (Cu.Opcode[7:4]==4'h7 && Cu.Opcode[3:2]==2'b01 ) ? 0 : DM.mem[DM.Sp];
 end
 endmodule 
