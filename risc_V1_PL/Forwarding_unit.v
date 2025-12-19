@@ -34,9 +34,8 @@ always @(*) begin
 end
 
 endmodule
-
 /* ALU has mux for 3 inputs now
 00: output from reg file
-01: output from alu 
-10 : output from memory 
-/*
+10: output from alu 
+01 : output from memory 
+*/
