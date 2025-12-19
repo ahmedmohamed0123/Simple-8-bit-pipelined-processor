@@ -22,7 +22,7 @@ module MEM_WB_Register (
     
     input wire 		[1:0]	rb_MEM,
     input wire 		[1:0]	ra_MEM,
-    
+
     
     // Outputs to WB stage
     output reg  [7:0]  alu_out_WB,
@@ -59,8 +59,8 @@ module MEM_WB_Register (
             w_Add_S_R_WB   <= 1'b0;
             w_Data_S_R_WB  <= 3'h0;
             Out_E_WB       <= 1'b0;
-            rb_MEM       <= 1'b0;
-            ra_MEM        <= 1'b0;
+            rb_WB      <= 1'b0;
+            ra_WB      <= 1'b0;
         end
         
         else if (flush) begin
@@ -77,8 +77,8 @@ module MEM_WB_Register (
             w_Add_S_R_WB   <= 1'b0;
             w_Data_S_R_WB  <= 3'h0;
             Out_E_WB       <= 1'b0;
-            rb_MEM         <= 1'b0;
-            ra_MEM         <=1'b0;
+            rb_WB         <= 1'b0;
+            ra_WB         <=1'b0;
         end
         
         else if (!stall) begin
@@ -96,8 +96,8 @@ module MEM_WB_Register (
             w_Add_S_R_WB   <= w_Add_S_R_MEM;
             w_Data_S_R_WB  <= w_Data_S_R_MEM;
             Out_E_WB       <= Out_E_MEM;
-            rb_MEM         <=rb_EX;
-            ra_MEM         <=ra_MEM;
+            rb_WB      <=rb_MEM;
+            ra_WB        <=ra_MEM;
         end
        
     end
