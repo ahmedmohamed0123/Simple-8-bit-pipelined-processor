@@ -185,7 +185,7 @@ module Top (
 		.rb(Reg_B),   
 		.targer_Sel(S_Target),
 		.Pc(Pc) ,
-		.stall(0)
+		.stall(stall_hazard)
 
 	);
 
@@ -213,8 +213,8 @@ PC_Control_Unit pcCu(
 
 	  .clk(clk),
 	  .rst_n(rst_n),
-	  .flush(0),
-	  .stall(0),
+	  .flush(flush_hazard),
+	  .stall(stall_hazard),
 	  .Pc_pluse1_If(Pc+1),	 
 	  .instr_If(Opcode), 
 	  .Imm_If(IMM),
@@ -293,8 +293,8 @@ PC_Control_Unit pcCu(
 	Id_Ex Id_Ex(
 	  .clk(clk),
 	  .rst_n(rst_n),
-	  .flush(0),
-	  .stall(0),
+	  .flush(flush_hazard),
+	  .stall(stall_hazard),
 	  .instruction(Opcode),
        //register file control signals
       .w_E_R_Id(w_E_R),		
