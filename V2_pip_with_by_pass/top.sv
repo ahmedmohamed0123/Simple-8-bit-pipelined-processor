@@ -47,8 +47,9 @@ module Top (
 
 		wire 	[7:0]	Opcode;
 		wire	[7:0]	IMM;
-
-
+//*************** ALU ports wires ***************//
+	wire [7:0] ALU_A;
+    wire [7:0] ALU_B;
 //*************** RegisterFile wires ***************//
 
 	    wire   	[1:0]   W_Add;
@@ -60,8 +61,9 @@ module Top (
       wire   	[7:0]  	Reg_B;
     	wire   	[7:0]  	Sp;
 //*************** Pipeline Control ***************//
-		wire flush;
-		wire stall;
+		wire flush_hazard;
+		wire stall_hazard;
+		wire [7:0] opcode_out;
 
 //*************** Forward unit  wires ***************//	
 		wire [1:0] forward_a;
@@ -180,9 +182,10 @@ module Top (
 		.imm(E_Imm),
 		.M1(out_WB),
 		.X(Sp_WB),
-		.rb(Reg_B),
+		.rb(Reg_B),   
 		.targer_Sel(S_Target),
-		.Pc(Pc)
+		.Pc(Pc) ,
+		.stall(0)
 
 	);
 
@@ -216,7 +219,7 @@ PC_Control_Unit pcCu(
 	  .instr_If(Opcode), 
 	  .Imm_If(IMM),
      .input_port_If(input_port),
-	  .Pc_pluse1_Id(Pc_pluse1_Id),
+	.Pc_pluse1_Id(Pc_pluse1_Id),
      .instr_Id(instr_Id),
      .Imm_Id(Imm_Id),
      .input_port_Id(input_port_Id)
@@ -292,7 +295,7 @@ PC_Control_Unit pcCu(
 	  .rst_n(rst_n),
 	  .flush(0),
 	  .stall(0),
-
+	  .instruction(Opcode),
        //register file control signals
       .w_E_R_Id(w_E_R),		
       .w_Add_S_R_Id(w_Add_S_R),	
@@ -347,39 +350,57 @@ PC_Control_Unit pcCu(
       .R_ra_Ex(R_ra_EX),
       .R_rb_Ex(R_rb_EX),
       .Sp_Ex(Sp_EX),
-      .input_port_Ex(input_port_EX)
+      .input_port_Ex(input_port_EX),
+	  .instruction_out(opcode_out)
     );
 	//Forward unit 
 	 forward_unit  Fu 
 	 (
-		.W_E_R_previous(w_E_R_Ex),
-		.R_ADD_A_current(R_Add_A_Id),
-		.R_ADD_B_current(R_Add_B_Id),
-		.W_add_B_previous(rb_Id),
-		.W_add_A_previous(ra_Id),
-		.w_Data_S_R_previous(w_Data_S_R_Ex),
-		.forward_A(forward_a),
-		.forward_B(forward_b)
+		.W_E_R_previous(w_E_R_EX), // output after ID/EX stage
+		.R_ADD_A_current(R_Add_A_Id), // output after IF/ID stage
+		.R_ADD_B_current(R_Add_B_Id), // output after IF/ID stage
+		.W_add_B_previous(rb_EX), // output after ID/EX stage
+		.W_add_A_previous(ra_EX), // output after ID/EX stage
+		.w_Data_S_R_previous(w_Data_S_R_EX), // output after ID/EX stage
+		.W_add_S_R(w_Add_S_R_EX),
+		.forward_A(forward_a), // selection for mux at alu input port (port a)
+		.forward_B(forward_b) // selection for mux at alu input port (port b)
 	 );
-
+     
 
 	CCR CCr1(
 		.clk(clk),     
 	    .rst(rst_n),                // Clock and Reset for sequential logic in CCR 
 	    .saveF(SaveFlags_EX),              // save flages in [7:4] if interupt came
 	    .returnF(returnF_EX),           // returen flags 
-			.Z(CCR[0]),
+		.Z(CCR[0]),
 	    .N(CCR[1]),
 	    .C(CCR[2]),
 	    .V(CCR[3]),             //Combinational output flags
 	    .CCR_wire(CCR_old)
 	);
 	
+	// Hazard unit 
+	 Hazard_Unit HU
+	 (
+		.OPCODE_EX(opcode_out), //output after ID/EX
+		.ra_addr_EX(ra_EX),
+		.CCR(CCR_old),
+		.W_E_R_EX(w_E_R_EX),
+		.w_Data_S_R_EX(w_Data_S_R_EX),
+		.ra_add_EX(ra_EX),
+		.rb_add_EX(rb_EX),
+		.R_ADD_A_ID(R_Add_A_Id),
+		.R_ADD_B_ID(R_Add_B_Id),
+		.FLUSH(flush_hazard),
+		.STALL(stall_hazard),
+		.W_add_S_R(w_Add_S_R_EX)
+	 );
 
 	ALU Alu(
 
-	    .A(R_ra_EX), 
-	    .B(R_rb_EX),
+	    .A(ALU_A), 
+	    .B(ALU_B),
 	    .Alu_opcode(Alu_Opcode_Ex),
 	    .CCR(CCR_old),
 	    .out(ALu_Out),			//Combinational output
@@ -393,8 +414,6 @@ PC_Control_Unit pcCu(
     regExecuteMemory EX_MEM (
           .clk(clk),
           .rst(rst_n),
-          .flush(0),
-          .stall(0),
           .Imm_EX(Imm_EX),
           .Pc_plus1_EX(Pc_pluse1_EX),
           .ALU_out_EX(ALu_Out),
@@ -434,8 +453,11 @@ PC_Control_Unit pcCu(
  		  .ra_MEM(ra_MEM),
 		  .rb_MEM(rb_MEM)
 	);
-	// Mux at input port for alu to forward data
-	
+		// Mux at input port for alu to forward data
+	assign ALU_A = (forward_a == 2'b00) ? R_ra_EX :(forward_a == 2'b01) ? Alu_out_MEM_1 :  (forward_a == 2'b10) ?  out_MEM:Imm_EX;
+
+    assign ALU_B = (forward_b == 2'b00) ? R_rb_EX :(forward_b == 2'b01) ? Alu_out_MEM_1 :  (forward_b == 2'b10) ?  out_MEM:Imm_EX;
+
   assign Mux1 = w_data_S_M_rb_MEM ? R_rb_MEM :Alu_out_MEM_1;
 
 	assign Mem_W_D = w_Data_S_M_MEM ? Pc_pluse1_MEM : Mux1 ;
@@ -461,9 +483,7 @@ PC_Control_Unit pcCu(
 
     MEM_WB_Register MEM_WB(           	   
 		  .clk(clk),
-          .rst_n(rst_n),
-          .stall(0),      // Stall signal to freeze p
-          .flush(0),      // Flush signal to clear pi        
+          .rst_n(rst_n),  
           .alu_out_MEM(Alu_out_MEM_1),
           .mem_data_MEM(out_MEM),
           .Sp_MEM(X),
