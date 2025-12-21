@@ -1,0 +1,462 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/questasim64_2021.1/examples
+T_opt
+!s110 1766181755
+VTXRCfjAEc>YP>`FA>`EoX2
+Z2 04 2 4 work TB fast 0
+=1-8cf8c58d5aa4-6945cb7a-34b-467c
+Z3 !s124 OEM100
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+Z5 tCvgOpt 0
+n@_opt
+Z6 OL;O;2021.1;73
+R1
+T_opt1
+!s110 1766311316
+VW0QgdlD@]bFD?6X_BU@OS2
+R2
+=31-8cf8c58d5aa4-6947c594-268-6284
+R3
+R4
+R5
+n@_opt1
+R6
+R1
+T_opt2
+!s110 1766260213
+Vh4;P>[V8[KHSbPL?7N=W02
+R2
+=20-b03cdc97bd8c-6946fdf5-176-75e0
+R4
+R5
+n@_opt2
+OL;O;10.6d;65
+R1
+vALU
+Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z8 !s110 1766311319
+!i10b 1
+!s100 a2a<L^lU4W`PR=]Vi9<hf1
+IldT_jGT@m26idZPlG^SaU0
+S1
+Z9 dC:/Micro project/tst_2/V2_pip_with_stall
+Z10 w1766219950
+8C:/Micro project/tst_2/V2_pip_with_stall/Alu.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/Alu.sv
+!i122 417
+L0 1 112
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z13 !s108 1766311319.000000
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Alu.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Alu.sv|
+!i113 0
+Z14 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@a@l@u
+vCCR
+R7
+R8
+!i10b 1
+!s100 5S?flefn06N7T>CeDN@B12
+IoUY]Hh;GI=8g1>mD1eK571
+S1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/CCR.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/CCR.sv
+!i122 418
+L0 1 39
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/CCR.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/CCR.sv|
+!i113 0
+R14
+R5
+n@c@c@r
+vControl_Unit
+R8
+!i10b 1
+!s100 hPMOYeNMO`:7[AlVOREhX3
+I?94RzQQNF4Wd7lIiz53aZ1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/Control_Unit.v
+FC:/Micro project/tst_2/V2_pip_with_stall/Control_Unit.v
+!i122 419
+L0 4 517
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Control_Unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Control_Unit.v|
+!i113 0
+Z15 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@control_@unit
+vDataMEM
+R7
+R8
+!i10b 1
+!s100 KLl05h7Jl]kdIbQ5:78RO1
+I37zUd:nW^Yi<^Wd?1_8WD1
+S1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/Datamemory.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/Datamemory.sv
+!i122 420
+L0 1 64
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Datamemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Datamemory.sv|
+!i113 0
+R14
+R5
+n@data@m@e@m
+vforward_unit
+R8
+!i10b 1
+!s100 ShIjXN3eH0oL0O]KAWJ<=2
+I>mdNl4K<fhMgL]G83acOz3
+R9
+w1766303010
+8C:/Micro project/tst_2/V2_pip_with_stall/Forwarding_unit.v
+FC:/Micro project/tst_2/V2_pip_with_stall/Forwarding_unit.v
+!i122 422
+L0 1 46
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Forwarding_unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Forwarding_unit.v|
+!i113 0
+R15
+R5
+vHazard_Unit
+R8
+!i10b 1
+!s100 Xl?I3HJ>f]RB2XB7RnP0m3
+IPNkD]JU<>on6eb:3KF=Oh2
+R9
+w1766304876
+8C:/Micro project/tst_2/V2_pip_with_stall/Hazard_Unit.v
+FC:/Micro project/tst_2/V2_pip_with_stall/Hazard_Unit.v
+!i122 423
+L0 1 52
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Hazard_Unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Hazard_Unit.v|
+!i113 0
+R15
+R5
+n@hazard_@unit
+vId_Ex
+R7
+Z16 !s110 1766311320
+!i10b 1
+!s100 UdNA58F1SYaQOIVHHz2Fk1
+I>oocTbDbeAAQizj0mS8jK3
+S1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/Id_Ex.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/Id_Ex.sv
+!i122 424
+L0 1 158
+R11
+R12
+r1
+!s85 0
+31
+Z17 !s108 1766311320.000000
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Id_Ex.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Id_Ex.sv|
+!i113 0
+R14
+R5
+n@id_@ex
+vIf_Id
+R7
+R16
+!i10b 1
+!s100 3_cd3^;nJfEBQ`DWb[Q8O0
+ISC:mUdmA83of__d1Rblki3
+S1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/If_Id.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/If_Id.sv
+!i122 425
+L0 1 41
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/If_Id.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/If_Id.sv|
+!i113 0
+R14
+R5
+n@if_@id
+vinstr_mem
+R7
+R16
+!i10b 1
+!s100 @_8TO93?IgUP`9?=EA`o:3
+ID5I[b@hFzPLZH8<c>6TO:2
+S1
+R9
+w1766301032
+8C:/Micro project/tst_2/V2_pip_with_stall/InstructionMemory.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/InstructionMemory.sv
+!i122 426
+L0 1 19
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/InstructionMemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/InstructionMemory.sv|
+!i113 0
+R14
+R5
+vMEM_WB_Register
+R16
+!i10b 1
+!s100 mcEE1zIF3=^]?>579n<No3
+IF0WDRWziO=;QVZXEFnT>g1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/MEM_WB.v
+FC:/Micro project/tst_2/V2_pip_with_stall/MEM_WB.v
+!i122 427
+L0 1 84
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/MEM_WB.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/MEM_WB.v|
+!i113 0
+R15
+R5
+n@m@e@m_@w@b_@register
+vPc
+R16
+!i10b 1
+!s100 TA1?@l@_n=IS?`XPzCRG@0
+I:?03Nc1oAbK0l5W`T_72o1
+R9
+w1766258154
+8C:\Micro project\tst_2\V2_pip_with_stall\Pc.v
+FC:\Micro project\tst_2\V2_pip_with_stall\Pc.v
+!i122 428
+L0 3 46
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:\Micro project\tst_2\V2_pip_with_stall\Pc.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:\Micro project\tst_2\V2_pip_with_stall\Pc.v|
+!i113 0
+R15
+R5
+n@pc
+vPC_Control_Unit
+R16
+!i10b 1
+!s100 1T1:E2KK4dfSU@iRD=X4E0
+I48Mjhg>cQV8UGL4LWS=bQ0
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/PC_Control_Only.v
+FC:/Micro project/tst_2/V2_pip_with_stall/PC_Control_Only.v
+!i122 429
+L0 4 336
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/PC_Control_Only.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/PC_Control_Only.v|
+!i113 0
+R15
+R5
+n@p@c_@control_@unit
+vregExecuteMemory
+R8
+!i10b 1
+!s100 ?WT<cYgH6903N=XPT;8I]2
+INX[B?>RN1Vj`^h4oN2BPT1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/ExMem_reg.v
+FC:/Micro project/tst_2/V2_pip_with_stall/ExMem_reg.v
+!i122 421
+L0 1 98
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/ExMem_reg.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/ExMem_reg.v|
+!i113 0
+R15
+R5
+nreg@execute@memory
+vRegFile
+R7
+R16
+!i10b 1
+!s100 l3ecKhcennN6nP3g8Yfed3
+IF;77zA0L<fW`XiI`bnEj42
+S1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/Reg_file.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/Reg_file.sv
+!i122 430
+L0 1 69
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Reg_file.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Reg_file.sv|
+!i113 0
+R14
+R5
+n@reg@file
+vTB
+R16
+!i10b 1
+!s100 ?YUf;l:Z^YzkA0d37XM2@0
+IT44gSDBJNe<;;8O9<d[a>1
+R9
+R10
+8C:/Micro project/tst_2/V2_pip_with_stall/Tb.v
+FC:/Micro project/tst_2/V2_pip_with_stall/Tb.v
+!i122 431
+L0 1 27
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/Tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/Tb.v|
+!i113 0
+R15
+R5
+n@t@b
+vTop
+R7
+R16
+!i10b 1
+!s100 ZLgnP955DcRgW7OAB9hAA3
+In`nYGHJemF0baDBJ9Ln2U2
+S1
+R9
+w1766311305
+8C:/Micro project/tst_2/V2_pip_with_stall/top.sv
+FC:/Micro project/tst_2/V2_pip_with_stall/top.sv
+!i122 432
+L0 1 519
+R11
+R12
+r1
+!s85 0
+31
+R17
+!s107 C:/Micro project/tst_2/V2_pip_with_stall/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V2_pip_with_stall/top.sv|
+!i113 0
+R14
+R5
+n@top
