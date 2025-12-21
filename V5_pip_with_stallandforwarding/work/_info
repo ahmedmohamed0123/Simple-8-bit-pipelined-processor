@@ -1,0 +1,481 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/questasim64_2021.1/examples
+T_opt
+!s110 1766181755
+VTXRCfjAEc>YP>`FA>`EoX2
+Z2 04 2 4 work TB fast 0
+=1-8cf8c58d5aa4-6945cb7a-34b-467c
+Z3 !s124 OEM100
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+Z5 tCvgOpt 0
+n@_opt
+Z6 OL;O;2021.1;73
+R1
+T_opt1
+!s110 1766311316
+VW0QgdlD@]bFD?6X_BU@OS2
+R2
+=31-8cf8c58d5aa4-6947c594-268-6284
+R3
+R4
+R5
+n@_opt1
+R6
+R1
+T_opt2
+!s110 1766325091
+VQ_5@nBKA2bMFgZ]8bXclV3
+R2
+=35-8cf8c58d5aa4-6947fb63-1e2-76c4
+R3
+R4
+R5
+n@_opt2
+R6
+R1
+vALU
+Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z8 !s110 1766325146
+!i10b 1
+!s100 a2a<L^lU4W`PR=]Vi9<hf1
+I^PM0I[A2mFD;W2gUobRIJ2
+S1
+Z9 dC:/Micro project/tst_2/V4_pip_with_stallandforwarding
+Z10 w1766219950
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Alu.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Alu.sv
+!i122 980
+L0 1 112
+Z11 VDg1SIo80bB@j0V0VzS_@n1
+Z12 OL;L;2021.1;73
+r1
+!s85 0
+31
+Z13 !s108 1766325146.000000
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Alu.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Alu.sv|
+!i113 0
+Z14 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@a@l@u
+vCCR
+R7
+R8
+!i10b 1
+!s100 5S?flefn06N7T>CeDN@B12
+I9c@UW_L?5AFc?25YhWnzk0
+S1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/CCR.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/CCR.sv
+!i122 981
+L0 1 39
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/CCR.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/CCR.sv|
+!i113 0
+R14
+R5
+n@c@c@r
+vControl_Unit
+R8
+!i10b 1
+!s100 hPMOYeNMO`:7[AlVOREhX3
+IT7inj3gT]U4BF=Dg0mODX0
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Control_Unit.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Control_Unit.v
+!i122 982
+L0 4 517
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Control_Unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Control_Unit.v|
+!i113 0
+Z15 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R5
+n@control_@unit
+vDataMEM
+R7
+R8
+!i10b 1
+!s100 KLl05h7Jl]kdIbQ5:78RO1
+IaK^OgJ8OF7fmEDUW^SBoH1
+S1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Datamemory.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Datamemory.sv
+!i122 983
+L0 1 64
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Datamemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Datamemory.sv|
+!i113 0
+R14
+R5
+n@data@m@e@m
+vforward_unit
+R8
+!i10b 1
+!s100 Y63fWlZG`OQQ8a9>SAA592
+I]E2>aBl<A;9CZJ39L_@oI1
+R9
+w1766324932
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Forwarding_unit.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Forwarding_unit.v
+!i122 985
+L0 1 47
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Forwarding_unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Forwarding_unit.v|
+!i113 0
+R15
+R5
+vHazard_Unit
+R8
+!i10b 1
+!s100 QmX9]G`HZTB;B4^4e0]9M1
+Ib73nJnnORAC:MQ^;Rof_n1
+R9
+w1766318379
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Hazard_Unit.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Hazard_Unit.v
+!i122 986
+L0 1 52
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Hazard_Unit.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Hazard_Unit.v|
+!i113 0
+R15
+R5
+n@hazard_@unit
+vId_Ex
+R7
+R8
+!i10b 1
+!s100 UdNA58F1SYaQOIVHHz2Fk1
+II_68>>Ri3K^4;niZDzR_Y1
+S1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Id_Ex.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Id_Ex.sv
+!i122 987
+L0 1 158
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Id_Ex.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Id_Ex.sv|
+!i113 0
+R14
+R5
+n@id_@ex
+vIf_Id
+R7
+R8
+!i10b 1
+!s100 3_cd3^;nJfEBQ`DWb[Q8O0
+IhcVgmJVkz><___^aE4]z<3
+S1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/If_Id.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/If_Id.sv
+!i122 988
+L0 1 41
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/If_Id.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/If_Id.sv|
+!i113 0
+R14
+R5
+n@if_@id
+vinstr_mem
+R7
+R8
+!i10b 1
+!s100 @_8TO93?IgUP`9?=EA`o:3
+I:>?N``IgNMCMFR9`<16dA3
+S1
+R9
+w1766324729
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/InstructionMemory.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/InstructionMemory.sv
+!i122 989
+L0 1 19
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/InstructionMemory.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/InstructionMemory.sv|
+!i113 0
+R14
+R5
+vMEM_WB_Register
+R8
+!i10b 1
+!s100 mcEE1zIF3=^]?>579n<No3
+IaJlmPg[bHBkG?b^nhi`IZ2
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/MEM_WB.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/MEM_WB.v
+!i122 990
+L0 1 84
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/MEM_WB.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/MEM_WB.v|
+!i113 0
+R15
+R5
+n@m@e@m_@w@b_@register
+vPc
+R8
+!i10b 1
+!s100 TA1?@l@_n=IS?`XPzCRG@0
+I:T^T:16@zo7PHV1XG[U7i0
+R9
+w1766258154
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Pc.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Pc.v
+!i122 991
+L0 3 46
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Pc.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Pc.v|
+!i113 0
+R15
+R5
+n@pc
+vPC_Control_Unit
+R8
+!i10b 1
+!s100 1T1:E2KK4dfSU@iRD=X4E0
+IzR2SlmDliVE;iHB:3eHl31
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/PC_Control_Only.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/PC_Control_Only.v
+!i122 992
+L0 4 336
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/PC_Control_Only.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/PC_Control_Only.v|
+!i113 0
+R15
+R5
+n@p@c_@control_@unit
+vregExecuteMemory
+R8
+!i10b 1
+!s100 ?WT<cYgH6903N=XPT;8I]2
+IL96gXd[>^=0om]R:dh6C]0
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/ExMem_reg.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/ExMem_reg.v
+!i122 984
+L0 1 98
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/ExMem_reg.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/ExMem_reg.v|
+!i113 0
+R15
+R5
+nreg@execute@memory
+vRegFile
+R7
+R8
+!i10b 1
+!s100 l3ecKhcennN6nP3g8Yfed3
+IFiJg^fTB27K]fSW[<jmZk0
+S1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Reg_file.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Reg_file.sv
+!i122 993
+L0 1 69
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Reg_file.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Reg_file.sv|
+!i113 0
+R14
+R5
+n@reg@file
+vTB
+R8
+!i10b 1
+!s100 ?YUf;l:Z^YzkA0d37XM2@0
+I[;9B@[;2<ie5zR<J[CK3`1
+R9
+R10
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Tb.v
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/Tb.v
+!i122 994
+L0 1 27
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/Tb.v|
+!i113 0
+R15
+R5
+n@t@b
+vTop
+R7
+!s110 1766325147
+!i10b 1
+!s100 m6l<B[IP[nVAC@4f4TVmE2
+I^KOXk`OJiJZVS6E:F8U7z3
+S1
+R9
+w1766325127
+8C:/Micro project/tst_2/V4_pip_with_stallandforwarding/top.sv
+FC:/Micro project/tst_2/V4_pip_with_stallandforwarding/top.sv
+!i122 995
+L0 1 519
+R11
+R12
+r1
+!s85 0
+31
+R13
+!s107 C:/Micro project/tst_2/V4_pip_with_stallandforwarding/top.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Micro project/tst_2/V4_pip_with_stallandforwarding/top.sv|
+!i113 0
+R14
+R5
+n@top
