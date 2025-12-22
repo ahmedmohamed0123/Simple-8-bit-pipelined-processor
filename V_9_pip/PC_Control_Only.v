@@ -43,7 +43,7 @@ always @(*)	begin
 
 			end
 
-		else if ((Opcode_reg [7:4]==9)) begin
+		else if ((Opcode_reg [7:4]>8)&&(Opcode_reg [7:4]<12)) begin
 
 			case (Opcode_reg [7:4])
 
