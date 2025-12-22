@@ -412,7 +412,7 @@ PC_Control_Unit pcCu(
 	ALU Alu(
 
 	    .A(AL_A), 
-	    .B(AL_B),
+		.B(ALU_B),
 	    .Alu_opcode(Alu_Opcode_Ex),
 	    .CCR(CCR_old),
 	    .out(ALu_Out),			//Combinational output
