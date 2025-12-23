@@ -17,6 +17,8 @@ module PC_Control_Unit (
 
 reg [7:0] Opcode_reg;
 
+
+
 always @(*)	begin
 
 	// pc control signals 
@@ -24,27 +26,13 @@ always @(*)	begin
 			E_Pc	=1'b0;	
 			E_Imm	=1'b0;		
 			load	=1'b0;
+
 			
-			if(!rst_n) begin  //(M[0]->pc)
+			
 
-            	// PC control signals  	
-					E_Pc	 = 1'b1;          // Enable PC update		
-					S_Target = 2'b00; 		  // to select M[0]
-					load	 = 1'b0;          // pass target selection
-
-			end
-
-		else if(interrupt) begin    //(M[1] -> pc)
-
-				// PC control signals   	
-					E_Pc	 = 1'b1;          // Enable PC update		
-					S_Target = 2'b01;         // to select M[1]
-					load	 = 1'b0;          // pass target selection 
-
-			end
-
-		else if ((Opcode_reg [7:4]>8)&&(Opcode_reg [7:4]<12)) begin
-
+		if ((Opcode_reg [7:4]==4'd9)||(Opcode_reg [7:4]==4'hA)) begin
+			
+			
 			case (Opcode_reg [7:4])
 
 								4'h9: begin
@@ -134,52 +122,14 @@ always @(*)	begin
 								   end
 
 						end
-
-						4'hB: begin               
-
-						case (Opcode_reg[3:2])
-
-								2'h0: begin    //JUMP
-			                    
-								//pc<--rb
-										S_Target	=2'b11;
-										E_Pc	=1'b1;		
-										load	=1'b0;
-
-								end
-
-								2'h1: begin       //CALL
-			                          //  pc<--rb              
-										S_Target	=2'b11;
-										E_Pc	=1'b1;			
-										load	=1'b0;
-								end
-
-								2'h2: begin        //RET
-								   //  pc<--sp             
-										S_Target	=2'b10;
-										E_Pc	=1'b1;			
-										load	=1'b0;
-								end
-
-								2'h3: begin            //RTI
-								   //     pc<--sp             
-										S_Target	=2'b10;
-										E_Pc	=1'b1;		
-										load	=1'b0;
-								end
-							
-							endcase
-					end
 									
 				endcase
-
-				Opcode_reg [7:4]=0;
+				
+				Opcode_reg=0;
 
 		end
 
 
-		
 							
 	else begin
 
@@ -270,14 +220,14 @@ always @(*)	begin
 			end
 
 /*------------------------------------- B-Format -------------------------------------*/
-			4'h9: begin
+			4'h9: begin   //Stall till Ex
 
 						E_Pc	= 1'b0;
 						Opcode_reg=Opcode;
 
 			end
  
-			4'hA: begin    //LOOP
+			4'hA: begin    //Stall till Ex
 					E_Pc	= 1'b0;
 					Opcode_reg=Opcode;
 
@@ -285,8 +235,39 @@ always @(*)	begin
 
 			4'hB: begin               
 
-					E_Pc	= 1'b0;
-					Opcode_reg=Opcode;
+					case (Opcode[3:2])
+
+								2'h0: begin    //JUMP
+			                    
+								//pc<--rb
+										S_Target	=2'b11;
+										E_Pc	=1'b1;		
+										load	=1'b0;
+										
+								end
+
+								2'h1: begin       //CALL
+			                          //  pc<--rb              
+										S_Target	=2'b11;
+										E_Pc	=1'b1;			
+										load	=1'b0;
+								end
+
+								2'h2: begin        //RET
+								   //  pc<--sp             
+										S_Target	=2'b10;
+										E_Pc	=1'b1;			
+										load	=1'b0;
+								end
+
+								2'h3: begin            //RTI
+								   //     pc<--sp             
+										S_Target	=2'b10;
+										E_Pc	=1'b1;		
+										load	=1'b0;
+								end
+							
+							endcase
 
 			end
 				
