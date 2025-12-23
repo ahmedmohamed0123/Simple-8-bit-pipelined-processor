@@ -42,6 +42,7 @@ module Top (
 //*************** PC wires ***************//
 
 		wire	[7:0]	Pc;
+		reg    [7:0]   Reg_B_forward;
 
 //*************** Instruction wires ***************//
 
@@ -68,6 +69,7 @@ module Top (
 //*************** Forward unit  wires ***************//	
 		wire [3:0] forward_a;
 		wire [3:0] forward_b;
+		wire [3:0] forward_b_pc;
 
 //*************** Alu wires ***************//
 
@@ -188,7 +190,7 @@ module Top (
 		.imm(E_Imm),
 		.M1(out_WB),
 		.X(Sp_WB),
-		.rb(Reg_B),   
+		.rb(Reg_B_forward),   
 		.targer_Sel(S_Target),
 		.Pc(Pc) ,
 		.stall(stall_hazard)
@@ -379,6 +381,26 @@ PC_Control_Unit pcCu(
 		.forward_A(forward_a),               // selection for mux at alu input port (port a)
 		.forward_B(forward_b)                // selection for mux at alu input port (port b)
 	 );
+     wire forward_A_pc;
+	 //Forward unit for Pc 
+	 forward_unit  Fu_Pc 
+	 (
+	 	.clk                (clk),
+		.W_E_R_previous(w_E_R_Id),           // output after ID/EX stage
+		.W_E_R_previous_previous(w_E_R_EX),  // output after EX/MEM stage
+		.W_add_S_previous(w_Add_S_R_Id),     // output after ID/EX stage	
+		.W_add_S_previous_previous(w_Add_S_R_EX),   // output after EX/MEM stage
+		.R_ADD_A_current(Opcode[3:2]),             // output after IF/ID stage
+		.R_ADD_B_current(Opcode[1:0]),             // output after IF/ID stage
+		.W_add_B_previous(R_Add_B_Id),            // output after ID/EX stage
+		.W_add_B_previous_previous(rb_EX),   // output after EX/MEM stage
+		.W_add_A_previous(R_ADD_A_ID),            // output after ID/EX stage
+		.W_add_A_previous_previous(ra_EX),   // output after EX/MEM stage
+		.w_Data_S_R_previous(w_Data_S_R_Id), // output after ID/EX stage
+		.w_Data_S_R_previous_previous(w_Data_S_R_EX), // output after EX/MEM stage
+		.forward_A(forward_A_pc),               // selection for mux at alu input port (port a)
+		.forward_B(forward_b_pc)                // selection for mux at alu input port (port b)
+	 );
      
 
 	CCR CCr1(
@@ -490,6 +512,12 @@ PC_Control_Unit pcCu(
 				4'b1011: ALU_B = input_port_WB;                    // From Input Port	   (Previous Previous instruction)
 				4'b1100: ALU_B = Imm_WB;                           // From Immediate Value (Previous Previous instruction)
 				default: ALU_B = R_rb_EX ;                         // From Register File   (Normal case)
+			endcase
+
+			case (forward_b_pc)
+				4'b0100: Reg_B_forward =  Imm_EX;                    // From Immediate Value (Previous instruction)
+				4'b1100: Reg_B_forward =  Imm_MEM;                    // From Immediate Value (Previous Previous instruction)
+				default: Reg_B_forward = Reg_B;                     // From Register File   (Normal case)
 			endcase
 		end
 
